@@ -1,0 +1,2 @@
+Pre-release changes:
+- Minor code adjustments to compile under KSP 1.1
