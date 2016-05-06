@@ -2,7 +2,7 @@ Pre-release changes:
 - [Change] Minor code adjustments to compile under KSP 1.1
 - [Change] Disable animation on 4-way light since it doesn't work properly anyways.
 - [Change] Rename GUI action and event names in 4-way light to identify which light they control.
-- [Internal] Create a multipoint light modulde and use it in 4-2ay light.
+- [Internal] Create a multipoint light module and use it in 4-way light.
 - [Internal] Migrate spot and omny lights to the stock LightModule.
 - [Internal] Drop incomplete SurfaceNavLight module.
 - [Internal] Drop unused SurfaceLight module.
