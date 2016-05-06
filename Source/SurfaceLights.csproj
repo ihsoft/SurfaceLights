@@ -66,8 +66,12 @@
       <HintPath>Q:\KSP_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Q:\KSP_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiPointSurfaceLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SurfaceLight.cs" />
     <Compile Include="SurfaceNavLight.cs" />
