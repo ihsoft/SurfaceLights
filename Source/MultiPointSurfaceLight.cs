@@ -107,12 +107,9 @@ public class MultiPointSurfaceLight : ModuleLight {
           uiEvent.guiName = lightName + ": " + uiEvent.guiName;
         }
       }
-      foreach (var field in Fields) {
-        var bf = field as BaseField;
-        if ((bf.name == "lightR" || bf.name == "lightG" || bf.name == "lightB")
-            && !bf.guiName.StartsWith(lightName)) {
-          bf.guiName = lightName + ": " + bf.guiName;
-        }
+      var uiFields = new[] {Fields["lightR"], Fields["lightG"], Fields["lightB"]};
+      foreach (var field in uiFields) {
+        field.guiName = lightName + ": " + field.guiName;
       }
     }
   }
