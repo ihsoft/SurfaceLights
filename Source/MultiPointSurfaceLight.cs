@@ -42,7 +42,7 @@ public class MultiPointSurfaceLight : ModuleLight {
   }
   AnimationState _animationState;
 
-  /// <summary>Scans for the animation in the model and records the found values.</summary>
+  /// <summary>Scans for the animation in the model and records the found value.</summary>
   /// <remarks>Scanning model for components is an expensive operation so, cache the found values
   /// assuming they won't change.
   /// <para>In case of some control needs to mangle with animations in runtime allow this method to
