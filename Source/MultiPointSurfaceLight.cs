@@ -80,7 +80,12 @@ public class MultiPointSurfaceLight : ModuleLight {
 
   public override void OnLoad(ConfigNode node) {
     base.OnLoad(node);
-    UpdateAnimationState();
+    if (animationState) {
+      UpdateAnimationState();
+    } else {
+      Debug.LogErrorFormat("Bad model or config in part {0}. Cannot find animation: {1}",
+                           part, animationName);
+    }
   }
   
   public override void OnStart(PartModule.StartState state) {
