@@ -111,11 +111,13 @@ public class MultiPointSurfaceLight : ModuleLight {
   /// texture if none is enabled.</remarks>
 	void UpdateAnimationState() {
     lastOnState = isOn;
-    var allAreOff = true;
-    foreach (var module in allLightModules) {
-      allAreOff &= !module.isOn;
+    if (animationState) {
+      var allAreOff = true;
+      foreach (var module in allLightModules) {
+        allAreOff &= !module.isOn;
+      }
+      animationState.normalizedTime = allAreOff ? 0 : 1;
     }
-    animationState.normalizedTime = allAreOff ? 0 : 1;
   }
 }
 
