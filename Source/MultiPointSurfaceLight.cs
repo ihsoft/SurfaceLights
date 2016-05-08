@@ -42,18 +42,6 @@ public class MultiPointSurfaceLight : ModuleLight {
   }
   AnimationState _animationState;
 
-  /// <summary>Animation to dim the light(s).</summary>
-  /// <remarks>For now it's global, for all the lights.</remarks>
-  Animation animation {
-    get {
-      if (!_animation) {
-        FindAnimation();
-      }
-      return _animation;
-    }
-  }
-  Animation _animation;
-
   /// <summary>Scans for the animation in the model and records the found values.</summary>
   /// <remarks>Scanning model for components is an expensive operation so, cache the found values
   /// assuming they won't change.
@@ -65,16 +53,11 @@ public class MultiPointSurfaceLight : ModuleLight {
     foreach (var modelAnimation in animations) {
       var modelAnimationState = modelAnimation[animationName];
       if (modelAnimationState != null) {
-        _animation = modelAnimation;
         _animationState = modelAnimationState;
         _animationState.normalizedSpeed = 0;  // Freeze.
+        modelAnimation.Play(animationName);
         break;
       }
-    }
-
-    // Animation is freezed so, it just applies the initial state.
-    if (_animation) {
-      animation.Play(animationName);
     }
   }
 
