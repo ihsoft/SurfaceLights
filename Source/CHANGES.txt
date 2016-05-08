@@ -7,3 +7,4 @@ Pre-release changes:
 - [Internal] Drop incomplete SurfaceNavLight module.
 - [Internal] Drop unused SurfaceLight module.
 - [Internal] Rename multi point light module to a more KSP name.
+- [Internal] Improve reliability of multi point light module when config paremetrs or model are bad.
