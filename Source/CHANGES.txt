@@ -6,3 +6,4 @@ Pre-release changes:
 - [Internal] Migrate spot and omny lights to the stock LightModule.
 - [Internal] Drop incomplete SurfaceNavLight module.
 - [Internal] Drop unused SurfaceLight module.
+- [Internal] Rename multi point light module to a more KSP name.

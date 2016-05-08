@@ -15,7 +15,7 @@ namespace KSP_Light_Mods {
 /// Light name is used to make GUI strings so, keep it short and human readable.
 /// E.g. "L1", "L2", etc.
 /// </remarks>
-public class MultiPointSurfaceLight : ModuleLight {
+public class ModuleMultiPointSurfaceLight : ModuleLight {
   /// <summary>Last known light state.</summary>
   bool lastOnState = false;
 
