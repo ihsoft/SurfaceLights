@@ -1,5 +1,6 @@
 {
     "CHANGE_LOG_URL": "https://raw.githubusercontent.com/ihsoft/SurfaceLights/master/CHANGELOG.md", 
+    "DOWNLOAD": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-112-surface-mounted-stock-alike-lights-for-self-illumination-v123-051316/", 
     "GITHUB": {
         "REPOSITORY": "SurfaceLights", 
         "USERNAME": "ihsoft"
@@ -12,7 +13,7 @@
     "NAME": "Surface Mounted Stock-Alike Lights for Self-Illumination", 
     "URL": "https://raw.githubusercontent.com/ihsoft/SurfaceLights/master/SurfaceLights.version", 
     "VERSION": {
-        "BUILD": 3, 
+        "BUILD": 0, 
         "MAJOR": 1, 
         "MINOR": 2, 
         "PATCH": 3

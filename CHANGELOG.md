@@ -1,3 +1,9 @@
+### 1.2.3 (May 13, 2016):
+- [Change] Code adjustments to compile under KSP 1.1.2
+- [Change] Disable animation on 4-way light since it doesn't work properly anyways.
+- [Change] Rename GUI action and event names in 4-way light to identify which light they control.
+- [Change] Expose setting "Lens brightness" to allow customizing light's minimum brightness level.
+
 ### 1.2.2
 - Fixed bug where light color was not correctly restored when loading a ship in the editor.
 - Refactored code for expansion (future development of navlights)
