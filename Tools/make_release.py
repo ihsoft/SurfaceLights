@@ -75,6 +75,7 @@ STRUCTURE = collections.OrderedDict({
     '/Binaries/MiniAVC.dll',
   ],
   '/GameData/SurfaceLights/Parts' : '/Parts',
+  '/GameData/SurfaceLights/Patches' : '/Patches',
 })
 
 VERSION = None
