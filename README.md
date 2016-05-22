@@ -1,3 +1,5 @@
+See [mod's forum](http://forum.kerbalspaceprogram.com/index.php?/topic/139724-112-surface-mounted-stock-alike-lights-for-self-illumination-v123-051316/) for discussions.
+
 # Surface Mounted Lights by Why485
 
 Self-illumination is something that I find lacking in stock Kerbal Space Program. 
