@@ -80,6 +80,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "Q:\GameData" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins" /Y</PostBuildEvent>
+    <PostBuildEvent>IF EXIST "Q:\GameData" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins\" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
