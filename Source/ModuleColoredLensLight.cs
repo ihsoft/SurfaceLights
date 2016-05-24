@@ -31,15 +31,18 @@ public class ModuleColoredLensLight : ModuleLight {
   }
   Material _lightMaterial;
 
+  /// <summary>Defines minimum white color level.</summary>
   [KSPField(guiName = "Lens brightness", isPersistant = true)]
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
   public float lensBrightness = 0.5f;
 
+  /// <inheritdoc/>
   public override void OnInitialize() {
     base.OnInitialize();
     UpdateLightTextureColor();
   }
 
+  /// <inheritdoc/>
   public void Update() {
     // It's to expensive to fetch and compare colors on every single frame. And normally is not
     // needed. Light color is expected to change in the editor but changes in flight can only happen

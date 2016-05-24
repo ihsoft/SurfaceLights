@@ -61,6 +61,7 @@ public class ModuleMultiPointSurfaceLight : ModuleLight {
     }
   }
 
+  /// <inheritdoc/>
   public override void OnLoad(ConfigNode node) {
     base.OnLoad(node);
     if (animationState) {
@@ -71,6 +72,7 @@ public class ModuleMultiPointSurfaceLight : ModuleLight {
     }
   }
   
+  /// <inheritdoc/>
   public override void OnStart(PartModule.StartState state) {
     base.OnStart(state);
     UpdateAnimationState();
@@ -97,6 +99,7 @@ public class ModuleMultiPointSurfaceLight : ModuleLight {
     }
   }
 
+  /// <inheritdoc/>
   public void Update() {
 	  // Verify global state of the animtation on every light state change.
 	  // FIXME: It's not the best idea from the performance perspective. So, fix the animation!
