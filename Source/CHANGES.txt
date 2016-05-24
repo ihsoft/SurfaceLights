@@ -1,2 +1,1 @@
 Pre-release changes:
-- [Change] Add surface light modules to stackable KIS items. Needs Module Manager.

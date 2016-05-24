@@ -1,3 +1,6 @@
+### 1.2.4 (May 23, 2016):
+- [Change] Add surface light modules to stackable KIS items. Needs Module Manager.
+
 ### 1.2.3 (May 13, 2016):
 - [Change] Code adjustments to compile under KSP 1.1.2
 - [Change] Disable animation on 4-way light since it doesn't work properly anyways.
