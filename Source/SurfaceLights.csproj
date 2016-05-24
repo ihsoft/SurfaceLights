@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Q:\KSP_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
