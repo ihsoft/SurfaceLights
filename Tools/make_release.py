@@ -71,6 +71,7 @@ STRUCTURE = collections.OrderedDict({
   ],
   '/GameData/SurfaceLights/Plugins' : [
     '/Source/bin/Release/SurfaceLights.dll',
+    '/Source/bin/Release/SurfaceLights.xml',
     '/SurfaceLights.version',
     '/Binaries/MiniAVC.dll',
   ],
