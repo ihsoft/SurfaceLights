@@ -10,12 +10,12 @@ using UnityEngine;
 
 namespace KSP_Light_Mods {
 
-/// <summary>A light module that keeps macth between emitting light color and the glowing texture
+/// <summary>A light module that keeps match between emitting light color and the glowing texture
 /// color ("lens").</summary>
-/// <remarks>Light color changes won't be picked up automaticaly since it's too expensive to do the
-/// check on every update. Lens color is updated only once on the part load. If color changes in
-/// runtime then the code that does the change must explicitly call
-/// <see cref="UpdateLightTextureColor"/> to have lens updated.</remarks>
+/// <remarks>If light color is changed inflight it won't be picked up automaticaly since it's too
+/// expensive to do the check on every update. Lens color is updated only once on the part load.
+/// To have color updated inflight the code that does the change must call
+/// <see cref="UpdateLightTextureColor"/> on the module.</remarks>
 public class ModuleColoredLensLight : ModuleLight {
   Color currentLensColor;
   float lastLensBrightness;
