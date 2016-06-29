@@ -22,7 +22,6 @@ PACKAGE_TITLE = 'Surface Mounted Stock-Alike Lights for Self-Illumination'
 # SRC configs.
 SRC = '..'
 # Extract version number from here. See ExtractVersion() method.
-#SRC_VERSIONS_FILE = SRC + '/kis.version'
 SRC_VERSIONS_FILE = SRC + '/Source/Properties/AssemblyInfo.cs'
 # An executable which will be called to build the project's binaraies in
 # release mode.
