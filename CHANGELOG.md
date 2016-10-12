@@ -1,3 +1,6 @@
+### 1.3.0 (October 12th, 2016)
+- [Enhancement] KSP 1.2 support
+
 ### 1.2.4 (May 23, 2016):
 - [Change] Add surface light modules to stackable KIS items. Needs Module Manager.
 
