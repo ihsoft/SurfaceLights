@@ -19,6 +19,7 @@ namespace KSP_Light_Mods {
 public class ModuleColoredLensLight : ModuleLight {
   Color currentLensColor;
   float lastLensBrightness;
+  const string EmissiveColorPropName = "_EmissiveColor";
 
   /// <summary>Light's material.</summary>
   protected Material lightMaterial {
@@ -62,7 +63,7 @@ public class ModuleColoredLensLight : ModuleLight {
         || Math.Abs(lastLensBrightness - lensBrightness) > float.Epsilon) {
       currentLensColor = newColor;
       lastLensBrightness = lensBrightness;
-      lightMaterial.SetColor("_EmissiveColor", newColor);
+      lightMaterial.SetColor(EmissiveColorPropName, newColor);
     }
   }
 
