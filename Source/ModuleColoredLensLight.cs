@@ -24,7 +24,7 @@ public class ModuleColoredLensLight : ModuleLight {
   protected Material lightMaterial {
     get {
       if (!_lightMaterial) {
-        _lightMaterial = GetComponentInChildren<MeshRenderer>().material;
+        _lightMaterial = part.FindModelComponent<Renderer>().material;
       }
       return _lightMaterial;
     }
