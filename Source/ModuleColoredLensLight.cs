@@ -1,8 +1,7 @@
 ﻿﻿// Surface Mounted Stock-Alike Lights for Self-Illumination
 // Author: Why485 (http://forum.kerbalspaceprogram.com/index.php?/profile/26795-why485/)
 // Author: igor.zavoychinskiy@gmail.com 
-// This software is distributed under
-// a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
+// License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
 using System;
 using System.Linq;
