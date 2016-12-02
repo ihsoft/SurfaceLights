@@ -9,6 +9,9 @@
         "repository": "https://github.com/ihsoft/SurfaceLights",
         "bugtracker": "https://github.com/ihsoft/SurfaceLights/issues"
     },
+    "depends"         : [
+        { "name": "ModuleManager" }
+    ],
     "license"        : "CC-BY-NC-ND-3.0",
     "author"         : ["Why485", "IgorZ"],
     "$vref"          : "#/ckan/ksp-avc",
