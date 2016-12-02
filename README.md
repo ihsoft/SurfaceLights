@@ -17,13 +17,11 @@ Thanks to peteletroll for maintaining the mod with minor fixes and optimizations
 
 ## Installation
 
-Extract the Gamedata folder into your KSP directory. The Source folder can be safely
-disregarded unless you're into that kind of thing.
+Follow instructions on the forum: http://forum.kerbalspaceprogram.com/index.php?/topic/139724-12-surface-mounted-stock-alike-lights-for-self-illumination-v130/.
 
-## How to Use
+It is important to follow the instructions exactly! Otherwise, the mod may not work properly.
 
-The three lights function the same as any other lights in the game, except that they
-have a default value that is no longer pure white.
+## Note
 
 Be wary of the per pixel light setting as it may prevent lights from showing. Be aware
 that the 4-way light counts as 4 separate lights, even though it is only one part.
