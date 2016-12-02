@@ -8,7 +8,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace KSP_Light_Mods {
+namespace SurfaceLights {
 
 /// <summary>A light module that keeps match between emitting light color and the glowing texture
 /// color ("lens").</summary>
