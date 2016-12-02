@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="ModuleColoredLensLight.cs" />
     <Compile Include="ModuleMultiPointSurfaceLight.cs" />
+    <Compile Include="ModuleStockLightColoredLens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
