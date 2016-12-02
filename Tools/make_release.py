@@ -63,7 +63,9 @@ DEST_PLUGIN_VERSION_COPY = (
 STRUCTURE = collections.OrderedDict({
   '/': [
   ],
-  '/GameData' : [],  # This will make the parent folder created.
+  '/GameData' : [
+    '/Binaries/ModuleManager.2.7.5.dll',
+  ],
   '/GameData/SurfaceLights' : [
     '/LICENSE.md',
     '/README.md',
