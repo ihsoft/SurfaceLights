@@ -4,7 +4,6 @@
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace SurfaceLights {
