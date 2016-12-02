@@ -8,17 +8,41 @@ using UnityEngine;
 
 namespace SurfaceLights {
 
-/// <summary>A light module that keeps match between emitting light color and the glowing texture
-/// color ("lens").</summary>
-/// <remarks>If light color is changed inflight it won't be picked up automaticaly since it's too
-/// expensive to do the check on every update. Lens color is updated only once on the part load.
-/// To have color updated inflight the code that does the change must call
-/// <see cref="UpdateLightTextureColor"/> on the module.</remarks>
+/// <summary>
+/// A light module that keeps match between emitting light color and the glowing texture
+/// color ("lens").
+/// </summary>
+/// <remarks>
+/// If light color is being changed from a script the color may not be properly reflected by the
+/// lens. In order to have it working as expected the change must be propagated to the module. See
+/// examples below.
+/// </remarks>
+/// <example>
+/// <para>
+/// When values are changed via <see cref="BaseField.SetValue"/> method the changes will be
+/// automatically picked up.
+/// </para>
+/// <code><![CDATA[
+/// var lightModule = part.GetComponent<ModuleColoredLensLight>();
+/// lightModule.Fields["lensBrightness"].SetValue(0.3f, lightModule);
+/// lightModule.Fields["lightR"].SetValue(1.0f, lightModule);
+/// lightModule.Fields["lightG"].SetValue(0.0f, lightModule);
+/// lightModule.Fields["lightB"].SetValue(0.0f, lightModule);
+/// ]]></code>
+/// <para>
+/// When changing values directly via fields the module must be notified to do the update.
+/// </para>
+/// <code><![CDATA[
+/// var lightModule = part.GetComponent<ModuleColoredLensLight>();
+/// lightModule.lensBrightness = 0.3f;
+/// lightModule.lightR = 1.0f;
+/// lightModule.lightG = 0.0f;
+/// lightModule.lightB = 0.0f;
+/// lightModule.UpdateLightTextureColor();
+/// ]]></code>
+/// </example>
+/// <seealso cref="lensBrightness"/>
 public class ModuleColoredLensLight : ModuleLight {
-  Color currentLensColor;
-  float lastLensBrightness;
-  const string EmissiveColorPropName = "_EmissiveColor";
-
   /// <summary>Light's material.</summary>
   protected Material lightMaterial {
     get {
@@ -31,6 +55,8 @@ public class ModuleColoredLensLight : ModuleLight {
   Material _lightMaterial;
 
   /// <summary>Defines minimum white color level.</summary>
+  /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
+  /// <seealso cref="ModuleColoredLensLight"/>
   [KSPField(guiName = "Lens brightness", isPersistant = true)]
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
   public float lensBrightness = 0.5f;
@@ -42,27 +68,20 @@ public class ModuleColoredLensLight : ModuleLight {
   }
 
   /// <inheritdoc/>
-  public void Update() {
-    // It's to expensive to fetch and compare colors on every single frame. And normally is not
-    // needed. Light color is expected to change in the editor but changes in flight can only happen
-    // via a script. If this happens the screep must also call this module to have the lens updated.
-    if (HighLogic.LoadedSceneIsEditor) {
-      UpdateLightTextureColor();
-    }
+  public override void OnAwake() {
+    base.OnAwake();
+    Fields["lensBrightness"].OnValueModified += (x => UpdateLightTextureColor());
+    Fields["lightR"].OnValueModified += (x => UpdateLightTextureColor());
+    Fields["lightG"].OnValueModified += (x => UpdateLightTextureColor());
+    Fields["lightB"].OnValueModified += (x => UpdateLightTextureColor());
   }
 
   /// <summary>
   /// Updates the emissive color of the material so that it matches the light color.
   /// </summary>
-  /// <remarks>Won't do the update if currecnt material color is the same.</remarks>
   public virtual void UpdateLightTextureColor() {
     var newColor = GetLightTextureColor();
-    if (currentLensColor != newColor
-        || Math.Abs(lastLensBrightness - lensBrightness) > float.Epsilon) {
-      currentLensColor = newColor;
-      lastLensBrightness = lensBrightness;
-      lightMaterial.SetColor(EmissiveColorPropName, newColor);
-    }
+    lightMaterial.SetColor("_EmissiveColor", newColor);
   }
 
   /// <summary>Returns a color to set on the emission texture.</summary>
