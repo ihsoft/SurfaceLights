@@ -1,4 +1,4 @@
-### 1.3.1 (pre-release)
+### 1.3.1 (December 1st, 2016)
 - [Enhancement #3] Support lens color in the stock lighting parts.
 
 ### 1.3.0 (October 12th, 2016)
