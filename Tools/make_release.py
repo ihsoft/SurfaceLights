@@ -16,7 +16,7 @@ import sys
 import time
 import collections
 
-ZIP_BINARY = 'L:/Program Files/7-Zip/7z.exe'
+ZIP_BINARY = 'C:/Program Files/7-Zip/7z.exe'
 PACKAGE_TITLE = 'Surface Mounted Stock-Alike Lights for Self-Illumination'
 
 # SRC configs.
