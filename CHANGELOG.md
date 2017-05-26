@@ -1,3 +1,6 @@
+### 1.4.0 (May 25st, 2017)
+- KSP 1.3 support.
+
 ### 1.3.1 (December 1st, 2016)
 - [Enhancement #3] Support lens color in the stock lighting parts.
 
