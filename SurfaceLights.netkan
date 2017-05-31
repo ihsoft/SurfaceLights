@@ -5,7 +5,7 @@
     "download"       : "https://kerbal.curseforge.com/projects/surface-mounted-stock-alike-lights-for-self/files/2424948/download",
     "abstract"       : "Small stock-alike lights that sit flush for lighting up your stations and ships.",
     "resources": {
-        "homepage": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-112-surface-mounted-stock-alike-lights-for-self-illumination-v123-051316/",
+        "homepage": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-surface-mounted-stock-alike-lights-for-self-illumination/",
         "repository": "https://github.com/ihsoft/SurfaceLights",
         "bugtracker": "https://github.com/ihsoft/SurfaceLights/issues"
     },
