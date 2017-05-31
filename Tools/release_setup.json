@@ -1,0 +1,21 @@
+{
+  "JSON_SCHEMA_VERSION": "1.0",
+  "PACKAGE_NAME": "SurfaceLights",
+  "SHELL_COMPILE_BINARY_SCRIPT" : "make_binary.cmd",
+  "STRUCTURE" : {
+    "/": [
+      "/Deps/*"
+    ],
+    "" : [
+      "/README.md",
+      "/LICENSE.md",
+      "/Parts",
+      "/Patches"
+    ],
+    "Plugins" : [
+      "{COMPILED_BINARY}",
+      "{MINIAVC_VERSION_FILE}",
+      "/Binaries/*"
+    ]
+  }
+}
