@@ -2,17 +2,18 @@
     "spec_version"   : 1,
     "name"           : "Surface Mounted Stock-Alike Lights",
     "identifier"     : "surfacelights",
-    "download"       : "https://kerbal.curseforge.com/projects/surface-mounted-stock-alike-lights-for-self/files/2424948/download",
     "abstract"       : "Small stock-alike lights that sit flush for lighting up your stations and ships.",
     "resources": {
         "homepage": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-surface-mounted-stock-alike-lights-for-self-illumination/",
         "repository": "https://github.com/ihsoft/SurfaceLights",
         "bugtracker": "https://github.com/ihsoft/SurfaceLights/issues"
     },
-    "depends"         : [
+    "depends"        : [
         { "name": "ModuleManager" }
     ],
     "license"        : "CC-BY-NC-ND-3.0",
     "author"         : ["IgorZ", "Why485"],
     "$vref"          : "#/ckan/ksp-avc",
+    "$kref"          : "#/ckan/curse/245073",
+    "x_netkan_version_edit" : "^v(?<version>.+)$"
 }
