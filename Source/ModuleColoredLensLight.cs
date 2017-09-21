@@ -57,7 +57,7 @@ public class ModuleColoredLensLight : ModuleLight {
   /// <summary>Defines minimum white color level.</summary>
   /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
   /// <seealso cref="ModuleColoredLensLight"/>
-  [KSPField(guiName = "Lens brightness", isPersistant = true)]
+  [KSPField(guiName = "#SurfaceLights_ModuleColoredLensLight_lensBrightness", isPersistant = true)]
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
   public float lensBrightness = 0.5f;
 
