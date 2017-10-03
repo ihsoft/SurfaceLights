@@ -1,4 +1,6 @@
 ### 1.6 (pre-release)
+- [Change] Put the stock lights in tyhe CCK category.
+- [Enhancement] Support CCK Lights "category".
 
 ### 1.5 (September 21st, 2017)
 - Support localization.
