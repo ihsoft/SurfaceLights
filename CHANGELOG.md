@@ -1,4 +1,4 @@
-### 1.6 (pre-release)
+### 1.6 (October 2nd, 2017)
 - [Change] Put the stock lights in tyhe CCK category.
 - [Enhancement] Support CCK Lights "category".
 
