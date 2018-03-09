@@ -1,5 +1,5 @@
 ### 1.7 (March 8th, 2018)
-- KSP 1.3 support.
+- KSP 1.4 support.
 
 ### 1.6 (October 2nd, 2017)
 - [Change] Put the stock lights in tyhe CCK category.
