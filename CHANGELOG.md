@@ -1,3 +1,8 @@
+### 1.8 (July 8th, 2018)
+- [Change] Upgrade the `ModuleManager` dependency version.
+- [Enhancement] Add Italian localization (IT_it).
+- [Enhancement] Add Spanish localization (ES_es).
+
 ### 1.7 (March 8th, 2018)
 - KSP 1.4 support.
 

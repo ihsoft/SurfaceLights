@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle ("SurfaceLights")]
-[assembly: AssemblyDescription ("Surface Mounted Lights by Why485")]
+[assembly: AssemblyDescription ("Surface Lights")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("SurfaceLights")]
@@ -24,8 +24,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion ("1.7.*")]
-[assembly: AssemblyInformationalVersion ("1.7 for KSP v1.4+")]
+[assembly: AssemblyVersion ("1.8.*")]
+[assembly: AssemblyInformationalVersion ("1.8 for KSP v1.4+")]
 [assembly: Guid ("a4d0ab40-75bd-44fb-80bc-f50c194faf4c")]
-[assembly: KSPAssembly ("SurfaceLights", 1, 7)]
+[assembly: KSPAssembly ("SurfaceLights", 1, 8)]
 [assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]
