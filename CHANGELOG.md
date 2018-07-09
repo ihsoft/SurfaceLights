@@ -1,4 +1,4 @@
-### 1.8 (pre)
+### 1.8 (July 8th, 2018)
 - [Change] Upgrade the `ModuleManager` dependency version.
 - [Enhancement] Add Italian localization (IT_it).
 - [Enhancement] Add Spanish localization (ES_es).
