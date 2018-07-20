@@ -1,0 +1,5 @@
+--project=1911
+--login=<<SECRET>>
+--changelog=../CHANGELOG.md
+--ksp_version=latest
+--archive=../SurfaceLights_v1.8.zip

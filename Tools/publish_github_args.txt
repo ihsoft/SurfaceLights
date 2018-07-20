@@ -1,0 +1,7 @@
+--user=ihsoft
+--repo=SurfaceLights
+--token=<<SECRET>>
+--changelog=../CHANGELOG.md
+--as_draft
+--title=SurfaceLights v{tag}
+--archive=../SurfaceLights_v1.8.zip
