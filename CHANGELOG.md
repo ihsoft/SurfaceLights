@@ -1,3 +1,6 @@
+### 1.9 (OCtober 16th, 2018)
+- [Change] KSP 1.5 compatibility.
+
 ### 1.8 (July 8th, 2018)
 - [Change] Upgrade the `ModuleManager` dependency version.
 - [Enhancement] Add Italian localization (IT_it).
