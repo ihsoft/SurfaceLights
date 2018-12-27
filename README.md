@@ -1,27 +1,56 @@
-See [mod's forum](http://forum.kerbalspaceprogram.com/index.php?/topic/139724-112-surface-mounted-stock-alike-lights-for-self-illumination-v123-051316/) for discussions.
+# Surface Mounted Lights
 
-# Surface Mounted Lights by Why485
+The stock light parts are designed to light the distant objects. However, the station itself needs some lighting to be usable when passing thru the dark side of the celestial body. The lighting parts in this mod are designed to highlight the surface, on which they are mounted. 
 
-Self-illumination is something that I find lacking in stock Kerbal Space Program. 
-I find the stock lights to be too large and clumsy to use for simple self-lighting. 
-The landing light especially is just overkill for something as simple making sure 
-your ship isn't completely dark at night.
+# Omni Light
 
-To solve this, I made three small lights with a simple stock-alike design. Two of
-the lights are loosely based off unreleased parts by ClairaLyrae for KSPX.
+Illuminates a small area on the vessel's surface.  
+![Omni Light](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/OmniLight-demo.png)
 
-BY DEFAULT, KSP ALLOWS ONLY 8 SIMULTANEOUS LIGHT SOURCES. IF SOME OF YOUR LIGHTS
-AREN'T SHOWING UP, YOU MAY BE HITTING THE LIGHT SOURCE LIMIT AND SHOULD RAISE IT.
+# Spot Light
+Illuminate the parts and objects at a small distance.  
+![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/SpotLight-demo.png)
 
-Thanks to peteletroll for maintaining the mod with minor fixes and optimizations.
+# 4Way Spot light
+A special version of the spot light that emits light in 4 perpendicular directions. Each light can be adjusted and controlled independently.  
+![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/4WaySpotLight-demo.png)
 
-## Installation
+# Features
 
-Follow instructions on the forum: http://forum.kerbalspaceprogram.com/index.php?/topic/139724-12-surface-mounted-stock-alike-lights-for-self-illumination-v130/.
+* All lights allow setting the color of the light.
+* The stock lights get an ability to change the lens color. It make them looking much cooler.  
+![Illuminator Mk1](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/Mk1-lens-demo.png) ![Illuminator Mk2](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk2-lens-demo.png)
 
-It is important to follow the instructions exactly! Otherwise, the mod may not work properly.
+# Languages supported
 
-## Note
+![Русский](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/Russian-small-flag.png) Русский
 
-Be wary of the per pixel light setting as it may prevent lights from showing. Be aware
-that the 4-way light counts as 4 separate lights, even though it is only one part.
+![Italiano](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/Italian-small-flag.png) Italiano
+
+![Español](https://github.com/ihsoft/SurfaceLights/raw/WikiContent/WikiImages/Spanish-small-flag.png) Español
+
+# Support
+
+You can support this and the other of my mods on [Patreon](https://www.patreon.com/ihsoft). This is where I post my ideas, prototypes and the features development progress.
+
+# How to install
+
+* _Recommended_:
+    * Install and run [CKAN](https://github.com/KSP-CKAN/CKAN/releases).
+    * Search for "Surface Mounted Lights", then install the mod.
+    * Occasionally run CKAN client to update the mod to the latest version.
+* Manual:
+    * Download the ZIP archive:
+        * From [CurseForge](https://kerbal.curseforge.com/projects/surface-mounted-stock-alike-lights-for-self/files).
+        * From [Spacedock](https://spacedock.info/mod/1911/Surface%20Mounted%20Lights).
+        * From [GitHub](https://github.com/ihsoft/SurfaceLights/releases).
+     * If you have an older version of the mod in your game, you __must__ delete all the old files first! __Do not just copy over__, this will likely result in compatibility issues.
+     * Unzip the release archive into the game's `GameData` folder.
+        * Note, that names of the folders __must__ be exactly like in the archive or the mod __won't work__.
+		* The release archive contains a minimum version of the required dependency: `ModuleManager`. If your game has better versions, do not overwrite!
+    * Verify the installation: the mod's `LICENSE.md` file must be located at `<game root>/GameData/SurfaceLights/LICENSE.md`.
+
+# Forum
+
+Ask questions and propose suggestions on
+[the forum](https://forum.kerbalspaceprogram.com/index.php?/topic/139724-16-surface-mounted-lights-v110/).
