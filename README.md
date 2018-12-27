@@ -54,3 +54,10 @@ You can support this and the other of my mods on [Patreon](https://www.patreon.c
 
 Ask questions and propose suggestions on
 [the forum](https://forum.kerbalspaceprogram.com/index.php?/topic/139724-16-surface-mounted-lights-v110/).
+
+# Development
+
+To start your local building envirtonment read [BUILD.md](https://github.com/ihsoft/SurfaceLights/blob/master/BUILD.md).
+
+If you're going to make a pull request, please, read [the code rules](https://github.com/ihsoft/SurfaceLights/blob/master/Source/README.md) first.
+Changes that don't follow the rules will be **rejected**.
