@@ -13,7 +13,7 @@ When making changes to the code, please, follow the code style-guide. Use common
 
 ## C# specific requirements
 
-###### Namespace indentation
+### Namespace indentation
 Body of a namespace should not be indented. With [one class per module requirement](http://google.github.io/styleguide/javaguide.html#s3.4-class-declaration) it's a waste of space. It's a waste even without this requirement.
 
 ```
@@ -26,7 +26,7 @@ class MyClass {
 }  // namespace
 ```
 
-###### Member names
+### Member names
 Identifier names should follow [camel-case](http://google.github.io/styleguide/javaguide.html#s5.3-camel-case) rule. Method names start from a capitalized letter. Variables and fields start from a lower case letter (as in the Java style-guide).
 
 ```
@@ -39,14 +39,14 @@ class MyClass {
 }
 ```
 
-###### Member visibility
+### Member visibility
 Don't set scope specifier for the private members. It's a default scope in C#.
 
 Don't make members protected or public unless you have an intent to let other people overriding the class. Normally, any public class should be either declared `sealed` or have a section explaining how to override it.
 
 When you need accessing object's properties inside the mod declare them `internal`. Or better declare the whole class `internal` to let people know this class is a utility object for the mod.
 
-###### Documentation
+### Documentation
 Every public or protected method or class must have [a documentation section](https://msdn.microsoft.com/en-us/library/5ast78ax.aspx). Sometimes it makes sense to add comments to the private and internal members as well. It will help future maintainers to understand the mod's code.
 
 Note, that overriden members still need documentation. If behavior is not changed and there is nothing special to say about the overriden logic you may simply use `<inheritdoc/>` tag to refer to the parent's documentation.
