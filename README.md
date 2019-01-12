@@ -29,6 +29,8 @@ A special version of the spot light that emits light in 4 perpendicular directio
 
 ![Español](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Spanish-small-flag.png) Español
 
+![Português](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Brazil-small-flag.png) Português
+
 # Support
 
 You can support this and the other of my mods on [Patreon](https://www.patreon.com/ihsoft). This is where I post my ideas, prototypes and the features development progress.

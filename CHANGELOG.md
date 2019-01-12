@@ -1,4 +1,5 @@
 ### 1.11 (pre-release):
+- [Enhancement] Add Portuguese localization (PT_br).
 - [Fix #16] Parts without bulkheadProfiles breaks KSP 1.6.
 
 ### 1.10 (December 22nd, 2018)
