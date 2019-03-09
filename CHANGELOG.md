@@ -1,4 +1,5 @@
-# 1.12 (pre-release):
+# 1.12 (March 8th, 2019):
+* [Fix #19] Compatibility with ReStock mod.
 
 # 1.11 (January 12th, 2019):
 * [Enhancement] Add Portuguese localization (PT_br).
