@@ -14,6 +14,16 @@ namespace SurfaceLights {
 /// parts ignores color settings and resets emissive color to default.
 /// </summary>
 public class ModuleStockLightColoredLens : ModuleColoredLensLight {
+
+  /// <summary>The model path for animation to adjust the emission color.</summary>
+  /// <remarks>
+  /// It's the model that contains the light's lens. It may change from model to model, but this
+  /// module was designed specifically for the game <i>stock</i> parts! So keep this string in sync
+  /// with the <i>stock</i> models.
+  /// </remarks>
+  /// <seealso cref="ReplaceLigthOnOffAnimation"/>
+  const string EmissiveLensModelPath = "";
+
   /// <inheritdoc/>
   public override void OnLoad(ConfigNode node) {
     base.OnLoad(node);
@@ -32,9 +42,9 @@ public class ModuleStockLightColoredLens : ModuleColoredLensLight {
     Debug.LogFormat("Replacing animation clip in part {0} for {1}", part, animation.clip.name);
     var clip = animation.clip;
     clip.ClearCurves();
-    clip.SetCurve("", typeof(Material), "_EmissiveColor.a",
+    clip.SetCurve(EmissiveLensModelPath, typeof(Material), "_EmissiveColor.a",
                   AnimationCurve.EaseInOut(0, 0, 1.0f, 1.0f));
-    clip.SetCurve("spotlight", typeof(Light), "m_Intensity",
+    clip.SetCurve(lightName, typeof(Light), "m_Intensity",
                   AnimationCurve.EaseInOut(0, 0, 1.0f, 1.0f));
   }
 }

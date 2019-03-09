@@ -4,6 +4,7 @@
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace SurfaceLights {
@@ -43,17 +44,6 @@ namespace SurfaceLights {
 /// </example>
 /// <seealso cref="lensBrightness"/>
 public class ModuleColoredLensLight : ModuleLight {
-  /// <summary>Light's material.</summary>
-  protected Material lightMaterial {
-    get {
-      if (!_lightMaterial) {
-        _lightMaterial = part.FindModelComponent<Renderer>().material;
-      }
-      return _lightMaterial;
-    }
-  }
-  Material _lightMaterial;
-
   /// <summary>Defines minimum white color level.</summary>
   /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
   /// <seealso cref="ModuleColoredLensLight"/>
@@ -80,8 +70,11 @@ public class ModuleColoredLensLight : ModuleLight {
   /// Updates the emissive color of the material so that it matches the light color.
   /// </summary>
   public virtual void UpdateLightTextureColor() {
-    var newColor = GetLightTextureColor();
-    lightMaterial.SetColor("_EmissiveColor", newColor);
+    // By default, update all the emissive materials.
+    part.FindModelComponents<Renderer>()
+        .Where(r => r.material.HasProperty("_EmissiveColor"))
+        .ToList()
+        .ForEach(r => r.material.SetColor("_EmissiveColor", GetLightTextureColor()));
   }
 
   /// <summary>Returns a color to set on the emission texture.</summary>
