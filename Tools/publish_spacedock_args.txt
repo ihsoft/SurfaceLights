@@ -1,5 +1,6 @@
 --project=1911
 --login=<<SECRET>>
 --changelog=../CHANGELOG.md
+--github=ihsoft/SurfaceLights
 --ksp_version=latest
 --archive=../SurfaceLights_v1.12.zip
