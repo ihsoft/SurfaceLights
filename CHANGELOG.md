@@ -1,4 +1,4 @@
-# 1.13 (pre-release):
+# 1.13 (April 23rd, 2019):
 * [Change] KSP 1.7 compatibility.
 
 # 1.12 (March 8th, 2019):
