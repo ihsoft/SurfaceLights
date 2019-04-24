@@ -1,6 +1,7 @@
 --project=245073
 --token=<<SECRET>>
 --changelog=../CHANGELOG.md
+--github=ihsoft/SurfaceLights
 --versions=latest_all_builds
 --title=SurfaceLights {tag}
---archive=../SurfaceLights_v1.12.zip
+--archive=../SurfaceLights_v1.13.zip
