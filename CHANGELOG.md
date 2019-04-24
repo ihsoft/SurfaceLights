@@ -1,4 +1,5 @@
 # 1.13 (pre-release):
+* [Change] KSP 1.7 compatibility.
 
 # 1.12 (March 8th, 2019):
 * [Fix #19] Compatibility with ReStock mod.
