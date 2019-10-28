@@ -3,25 +3,25 @@
     "DOWNLOAD": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-surface-mounted-stock-alike-lights-for-self-illumination/", 
     "KSP_VERSION": {
         "MAJOR": 1, 
-        "MINOR": 7, 
+        "MINOR": 8, 
         "PATCH": 0
     }, 
     "KSP_VERSION_MAX": {
         "MAJOR": 1, 
-        "MINOR": 7, 
+        "MINOR": 8, 
         "PATCH": 99
     }, 
     "KSP_VERSION_MIN": {
         "MAJOR": 1, 
-        "MINOR": 7, 
+        "MINOR": 8, 
         "PATCH": 0
     }, 
     "NAME": "Surface Mounted Lights", 
     "URL": "https://raw.githubusercontent.com/ihsoft/SurfaceLights/master/SurfaceLights.version", 
     "VERSION": {
-        "BUILD": 37376, 
+        "BUILD": 37956, 
         "MAJOR": 1, 
-        "MINOR": 13, 
-        "PATCH": 7052
+        "MINOR": 14, 
+        "PATCH": 7239
     }
 }

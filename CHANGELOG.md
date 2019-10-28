@@ -1,3 +1,6 @@
+# 1.14 (October 27rd, 2019):
+* [Change] `KSP 1.8` compatibility. __WARNING__: the mod won't work with version lower than `KSP 1.8`!
+
 # 1.13 (April 23rd, 2019):
 * [Change] KSP 1.7 compatibility.
 
