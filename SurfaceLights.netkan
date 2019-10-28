@@ -1,7 +1,7 @@
 {
     "spec_version"   : 1,
     "name"           : "Surface Mounted Lights",
-    "identifier"     : "surfacelights",
+    "identifier"     : "SurfaceLights",
     "abstract"       : "Small stock-alike lights that sit flush for lighting up your stations, ships, and landing zones.",
     "resources": {
         "homepage": "http://forum.kerbalspaceprogram.com/index.php?/topic/139724-surface-mounted-stock-alike-lights-for-self-illumination/",
@@ -14,6 +14,5 @@
     "license"        : "CC-BY-NC-ND-3.0",
     "author"         : ["IgorZ", "Why485"],
     "$vref"          : "#/ckan/ksp-avc",
-    "$kref"          : "#/ckan/curse/245073",
-    "x_netkan_version_edit" : "^v(?<version>.+)$"
+    "$kref"           : "#/ckan/spacedock/1911"
 }
