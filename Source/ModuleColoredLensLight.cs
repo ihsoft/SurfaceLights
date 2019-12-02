@@ -3,7 +3,6 @@
 // Author: igor.zavoychinskiy@gmail.com 
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -79,7 +78,7 @@ public class ModuleColoredLensLight : ModuleLight {
 
   /// <summary>Returns a color to set on the emission texture.</summary>
   /// <remarks>Using raw color looks kinda ugly, so do some minor filtering. Add an intensity offset
-  /// to the light's color to make the texture be colored even when the lgiht is turned off.
+  /// to the light's color to make the texture be colored even when the light is turned off.
   /// </remarks>
   protected virtual Color GetLightTextureColor() {
     return new Color(lightR * (1.0f - lensBrightness) + lensBrightness,
