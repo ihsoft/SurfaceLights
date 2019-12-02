@@ -1,4 +1,5 @@
 # 1.15 (pre-release):
+* [Fix #25] Stock lights don't emit light, conflict with Restock.
 
 # 1.14 (October 27th, 2019):
 * [Change] `KSP 1.8` compatibility. __WARNING__: the mod won't work with version lower than `KSP 1.8`!
