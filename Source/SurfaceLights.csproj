@@ -79,6 +79,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetDir)*.dll" "Q:\GameData\SurfaceLights\Plugins\" /Y</PostBuildEvent>
+    <PostBuildEvent>IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins\" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
