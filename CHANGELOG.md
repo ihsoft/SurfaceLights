@@ -1,4 +1,4 @@
-# 1.15 (pre-release):
+# 1.15 (December 1st, 2019):
 * [Fix #25] Stock lights don't emit light, conflict with Restock.
 
 # 1.14 (October 27th, 2019):
