@@ -1,4 +1,5 @@
 # 1.16 (pre-release):
+* [Change] Stop complaining about KSP minor version change.
 
 # 1.15 (December 1st, 2019):
 * [Fix #25] Stock lights don't emit light, conflict with Restock.
