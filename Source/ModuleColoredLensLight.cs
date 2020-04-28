@@ -42,7 +42,7 @@ namespace SurfaceLights {
 /// ]]></code>
 /// </example>
 /// <seealso cref="lensBrightness"/>
-public class ModuleColoredLensLight : ModuleLight {
+public class ModuleColoredLensLight : ModuleLightEva {
   /// <summary>Defines minimum white color level.</summary>
   /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
   /// <seealso cref="ModuleColoredLensLight"/>
@@ -57,12 +57,17 @@ public class ModuleColoredLensLight : ModuleLight {
   }
 
   /// <inheritdoc/>
-  public override void OnAwake() {
-    base.OnAwake();
-    Fields["lensBrightness"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightR"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightG"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightB"].OnValueModified += (x => UpdateLightTextureColor());
+  public override void OnStart(StartState state) {
+    base.OnStart(state);
+    SetupField(nameof(lensBrightness), f => {
+      if (allowEvaControl) {
+        SetupFieldForEva(f);
+      }
+      f.OnValueModified += (x => UpdateLightTextureColor());
+    });
+    SetupField(nameof(lightR), f => f.OnValueModified += (x => UpdateLightTextureColor()));
+    SetupField(nameof(lightG), f => f.OnValueModified += (x => UpdateLightTextureColor()));
+    SetupField(nameof(lightB), f => f.OnValueModified += (x => UpdateLightTextureColor()));
   }
 
   /// <summary>

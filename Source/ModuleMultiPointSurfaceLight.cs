@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace KSP_Light_Mods {
+namespace SurfaceLights {
 
 /// <summary>A module to control a light part that has multiple light sources that can be
 /// controlled independently.</summary>
@@ -15,7 +15,7 @@ namespace KSP_Light_Mods {
 /// Light name is used to make GUI strings so, keep it short and human readable.
 /// E.g. "L1", "L2", etc.
 /// </remarks>
-public class ModuleMultiPointSurfaceLight : ModuleLight {
+public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   /// <summary>Last known light state.</summary>
   bool lastOnState = false;
 
