@@ -50,6 +50,7 @@ public class ModuleColoredLensLight : ModuleLightEva {
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
   public float lensBrightness = 0.5f;
 
+  #region ModuleLightEva overrides
   /// <inheritdoc/>
   public override void OnInitialize() {
     base.OnInitialize();
@@ -70,6 +71,9 @@ public class ModuleColoredLensLight : ModuleLightEva {
     SetupField(nameof(lightB), f => f.OnValueModified += (x => UpdateLightTextureColor()));
   }
 
+  #endregion
+
+  #region Inheritable util methods
   /// <summary>
   /// Updates the emissive color of the material so that it matches the light color.
   /// </summary>
@@ -90,6 +94,7 @@ public class ModuleColoredLensLight : ModuleLightEva {
                      lightG * (1.0f - lensBrightness) + lensBrightness,
                      lightB * (1.0f - lensBrightness) + lensBrightness);
   }
+  #endregion
 }
 
 }  // namespace
