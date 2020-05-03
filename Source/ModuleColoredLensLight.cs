@@ -77,7 +77,7 @@ public class ModuleColoredLensLight : ModuleLightEva {
   /// <summary>
   /// Updates the emissive color of the material so that it matches the light color.
   /// </summary>
-  public virtual void UpdateLightTextureColor() {
+  protected void UpdateLightTextureColor() {
     // By default, update all the emissive materials.
     part.FindModelComponents<Renderer>()
         .Where(r => r.material.HasProperty("_EmissiveColor"))
@@ -89,7 +89,7 @@ public class ModuleColoredLensLight : ModuleLightEva {
   /// <remarks>Using raw color looks kinda ugly, so do some minor filtering. Add an intensity offset
   /// to the light's color to make the texture be colored even when the light is turned off.
   /// </remarks>
-  protected virtual Color GetLightTextureColor() {
+  protected Color GetLightTextureColor() {
     return new Color(lightR * (1.0f - lensBrightness) + lensBrightness,
                      lightG * (1.0f - lensBrightness) + lensBrightness,
                      lightB * (1.0f - lensBrightness) + lensBrightness);
