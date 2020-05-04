@@ -4,6 +4,7 @@
 // Github: https://github.com/ihsoft/SurfaceLights
 
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace SurfaceLights {
@@ -13,28 +14,105 @@ namespace SurfaceLights {
 /// in the editor only. 
 /// </summary>
 /// <remarks>
-/// This module allows exposing RGB color settings and light ON/OFF controls in EVA. It's controlled
-/// by a special module settings <see cref="allowEvaControl"/>. If this setting is <c>false</c>,
-/// then no exposure is made and the default behavior is preserved.  
+/// This module allows exposing some of the key light settings in both editor and flight. It's
+/// controlled by a special module settings <see cref="allowEvaControl"/>. If this setting is
+/// <c>false</c>, then no exposure is made and the default behavior is preserved.  
 /// </remarks>
 public class ModuleLightEva : ModuleLight {
+  #region Part config fields
   /// <summary>Tells if the light can be adjusted and operated from EVA.</summary>
-  /// <remarks>It affects the color and lens brightness settings.</remarks>
   [KSPField]
   public bool allowEvaControl;
 
+  /// <summary>Sets the maximum range value in GUI.</summary>
+  /// <remarks>
+  /// If it's less than the model light currently have, the model's value will be used instead.
+  /// </remarks>
+  [KSPField]
+  public float maxLightRange = -1f;
+  #endregion
+
+  #region Persistant config fields
+  /// <summary>Spotlight angle to apply to the lights in the part.</summary>
+  /// <remarks>
+  /// If <c>null</c>, then no override is applied. The override is applied to all the lights in
+  /// the part.
+  /// </remarks>
+  [KSPField(isPersistant = true)]
+  public float spotAngleOverride = -1;
+
+  /// <summary>Light range value to apply to the lights in the part.</summary>
+  /// <remarks>
+  /// If <c>null</c>, then no override is applied. The override is applied to all the lights in
+  /// the part.
+  /// </remarks>
+  [KSPField(isPersistant = true)]
+  public float lightRangeOverride = -1;
+  #endregion
+
+  #region PAW controls
+  /// <summary>Allows changing the spot angle of the light(s).</summary>
+  [KSPField(guiName = "#SurfaceLights_ModuleLightEva_SpotAngle", advancedTweakable = true)]
+  [UI_FloatRange(stepIncrement = 1f, minValue = 10f, maxValue = 180f)]
+  public float spotAngle;
+
+  /// <summary>Allows changing the light(s) range.</summary>
+  [KSPField(guiName = "#SurfaceLights_ModuleLightEva_LightRange", advancedTweakable = true)]
+  [UI_FloatRange(stepIncrement = 0.1f, minValue = 0f, maxValue = 100f)]
+  public float lightRange;
+  #endregion
+
+  #region PartModule overrides
   /// <inheritdoc/>
   public override void OnStart(StartState state) {
     base.OnStart(state);
-    if (allowEvaControl) {
-      SetupEvent(LightsOn, SetupEventForEva);
-      SetupEvent(LightsOff, SetupEventForEva);
-      SetupField(nameof(lightR), SetupFieldForEva);
-      SetupField(nameof(lightG), SetupFieldForEva);
-      SetupField(nameof(lightB), SetupFieldForEva);
+    if (spotAngleOverride > 0) {
+      UpdateSpotLightAngle(spotAngleOverride);
+    }
+    if (lightRangeOverride > 0) {
+      UpdateLightRange(lightRangeOverride);
+    }
+    if (!allowEvaControl) {
+      return;  // Nothing to do.
+    }
+
+    // Populate the UI controls with the actual data from the model.
+    var refLight = lights[0];
+    if (lights.Count > 1) {
+      Debug.LogWarning(
+          "Multiple lights are not supported! Use to the first one as the reference.");
+    }
+    spotAngle = refLight.spotAngle;
+    lightRange = refLight.range;
+
+    // Setup the stock fields and events for EVA usage. 
+    SetupEvent(LightsOn, SetupEventForEva);
+    SetupEvent(LightsOff, SetupEventForEva);
+    SetupField(nameof(lightR), SetupFieldForEva);
+    SetupField(nameof(lightG), SetupFieldForEva);
+    SetupField(nameof(lightB), SetupFieldForEva);
+
+    SetupEvent(ResetUnsavedSettings, SetupEventForEva);
+
+    // Allow spotlight angle to be customized.
+    if (refLight.type == LightType.Spot) {
+      SetupField(nameof(spotAngle), f => {
+        AdjustUiFloatMax(f, spotAngle);
+        SetupFieldForEva(f);
+        f.OnValueModified += x => UpdateSpotLightAngle((float) x);
+      });
+    }
+
+    // Allow light range to be customized.
+    SetupField(nameof(lightRange), f => {
+      AdjustUiFloatMax(f, Math.Max(lightRange, maxLightRange));
+      SetupFieldForEva(f);
+      f.OnValueModified += x => UpdateLightRange((float) x);
+    });
     }
   }
-  
+  #endregion
+
   #region Inheritable utility methods
   /// <summary>Makes the event to be fully accessible from EVA.</summary>
   protected static void SetupEventForEva(BaseEvent kspEvent) {
@@ -71,6 +149,31 @@ public class ModuleLightEva : ModuleLight {
       return;
     }
     setupFn.Invoke(kspField);
+  }
+
+  /// <summary>Ensures the FloatRange UI control can deal with the value.</summary>
+  /// <remarks>Call it when the upper bound of the range is not known in advance.</remarks>
+  /// <param name="field">The FloatRange field to adjust.</param>
+  /// <param name="actualValue">The value that needs to fit the control.</param>
+  protected static void AdjustUiFloatMax(BaseField field, float actualValue) {
+    var uiFloat = field.uiControlFlight as UI_FloatRange;
+    if (uiFloat != null && uiFloat.maxValue < actualValue) {
+      uiFloat.maxValue = actualValue;
+    }
+  }
+  #endregion
+
+  #region Local utility methods
+  /// <summary>Updates the spot light angle in all of the lights in the module.</summary>
+  void UpdateSpotLightAngle(float newValue) {
+    spotAngleOverride = newValue;
+    lights.ForEach(l => l.spotAngle = newValue);
+  }
+
+  /// <summary>Updates the light range in all of the lights in the module.</summary>
+  void UpdateLightRange(float newValue) {
+    lightRangeOverride = newValue;
+    lights.ForEach(l => l.range = newValue);
   }
   #endregion
 }
