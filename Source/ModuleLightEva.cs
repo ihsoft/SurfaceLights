@@ -275,7 +275,6 @@ public class ModuleLightEva : ModuleLight {
         uiFloat.maxValue = refValue;
       }
     }
-    return;
   } 
 
   /// <summary>Updates the spot light angle in all of the lights in the module.</summary>

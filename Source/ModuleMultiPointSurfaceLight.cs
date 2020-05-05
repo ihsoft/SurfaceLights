@@ -1,10 +1,9 @@
 ﻿// Surface Mounted Stock-Alike Lights for Self-Illumination
-// Mod's author: Why485 (http://forum.kerbalspaceprogram.com/index.php?/profile/26795-why485/)
+// Mod author: Why485 (http://forum.kerbalspaceprogram.com/index.php?/profile/26795-why485/)
 // Module author: igor.zavoychinskiy@gmail.com
 // This software is distributed under
 // a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
-using System;
 using UnityEngine;
 
 namespace SurfaceLights {
@@ -17,17 +16,11 @@ namespace SurfaceLights {
 /// </remarks>
 public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   /// <summary>Last known light state.</summary>
-  bool lastOnState = false;
+  bool _lastOnState;
 
   /// <summary>All the light modules on the part.</summary>
-  ModuleLight[] allLightModules {
-    get {
-      if (_allLightModules == null) {
-        _allLightModules = part.GetComponents<ModuleLight>();
-      }
-      return _allLightModules;
-    }
-  }
+  ModuleLight[] allLightModules =>
+      _allLightModules ?? (_allLightModules = part.GetComponents<ModuleLight>());
   ModuleLight[] _allLightModules;
 
   /// <summary>Dimming animation effect.</summary>
@@ -73,15 +66,15 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   }
   
   /// <inheritdoc/>
-  public override void OnStart(PartModule.StartState state) {
+  public override void OnStart(StartState state) {
     base.OnStart(state);
     UpdateAnimationState();
 
     // Rewrite GUI names to identify different lights. Only do it when part is created in the
     // editor. Rewritten names will be stored in the save file so, no need to fix them every time.
-    // Though, editor starts part on every load so, soem check is needed to not modify names
-    // endlessly.
-    if (state == PartModule.StartState.Editor) {
+    // Though, the editor starts part on every load so, some checks may be needed to not modify
+    // names endlessly.
+    if (state == StartState.Editor) {
       foreach (var action in Actions) {
         if (!action.guiName.StartsWith(lightName)) {
           action.guiName = lightName + ": " + action.guiName;
@@ -99,11 +92,10 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
     }
   }
 
-  /// <inheritdoc/>
-  public void Update() {
-	  // Verify global state of the animtation on every light state change.
+  void Update() {
+	  // Verify global state of the animation on every light state change.
 	  // FIXME: It's not the best idea from the performance perspective. So, fix the animation!
-    if (lastOnState != isOn) {
+    if (_lastOnState != isOn) {
       UpdateAnimationState();
     }
   }
@@ -113,7 +105,7 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   /// behaving nicely show the lighted texture if at least one of the lights is active. Disable the
   /// texture if none is enabled.</remarks>
 	void UpdateAnimationState() {
-    lastOnState = isOn;
+    _lastOnState = isOn;
     if (animationState) {
       var allAreOff = true;
       foreach (var module in allLightModules) {
