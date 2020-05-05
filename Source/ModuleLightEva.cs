@@ -63,7 +63,7 @@ public class ModuleLightEva : ModuleLight {
 
   /// <summary>Resets all the adjustable settings to the state on the scene load.</summary>
   /// <summary>Once the scene is saved, this state becomes the base.</summary>
-  [KSPEvent(guiName = "#SurfaceLights_ModuleLightEva_ResetUnsaved", guiActiveEditor = true)]
+  [KSPEvent(guiName = "#SurfaceLights_ModuleLightEva_ResetUnsaved")]
   public void ResetUnsavedSettings() {
     RestorePersistedSettings();
   }
