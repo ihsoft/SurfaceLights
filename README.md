@@ -17,9 +17,14 @@ A special version of the spot light that emits light in 4 perpendicular directio
 
 # Features
 
-* All lights allow setting the color of the light.
 * The stock lights get an ability to change the lens color. It make them looking much cooler.  
 ![Illuminator Mk1](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk1-lens-demo.png) ![Illuminator Mk2](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk2-lens-demo.png)
+* All light parts, including the stock ones, can be adjusted in flight when EVA. The following properties can be adjusted:
+  - On/OFF status. Even if the vessel that owns the part is not controllable.
+  - Color of the light.
+  - The light part lens intensity. __In Adwanced Tweakables mode only__.
+  - The spotlight angle. __In Adwanced Tweakables mode only__.
+  - The light range. __In Adwanced Tweakables mode only__.
 
 # Languages supported
 
