@@ -249,8 +249,6 @@ public class ModuleLightEva : ModuleLight {
   /// </remarks>
   /// <returns>Empty array or an array of the modules that acn be adjusted for EVA.</returns>
   protected ModuleAnimateGeneric[] GetGenericAnimationModulesForEva() {
-    //FIXME
-    Debug.LogAssertionFormat("*** allow erstocked {0}", allowEvaAnimationControl);
     if (allowEvaAnimationControl) {
       return part.Modules.OfType<ModuleAnimateGeneric>()
           .Where(x => x.allowDeployLimit)
