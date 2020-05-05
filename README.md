@@ -1,23 +1,23 @@
 # Surface Mounted Lights
 
-The stock light parts are designed to light the distant objects. However, the station itself needs some lighting to be usable when passing thru the dark side of the celestial body. The lighting parts in this mod are designed to highlight the surface, on which they are mounted. 
+The stock light parts are designed to light the distant objects. However, the station itself needs some lighting to be usable when passing thru the dark side of the celestial body. The lighting parts in this mod are designed to highlight the surface, on which they are mounted.
 
 # Omni Light
 
-Illuminates a small area on the vessel's surface.  
+Illuminates a small area on the vessel's surface.
 ![Omni Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/OmniLight-demo.png)
 
 # Spot Light
-Illuminate the parts and objects at a small distance.  
+Illuminate the parts and objects at a small distance.
 ![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/SpotLight-demo.png)
 
 # 4Way Spot light
-A special version of the spot light that emits light in 4 perpendicular directions. Each light can be adjusted and controlled independently.  
+A special version of the spot light that emits light in 4 perpendicular directions. Each light can be adjusted and controlled independently.
 ![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/4WaySpotLight-demo.png)
 
 # Features
 
-* The stock lights get an ability to change the lens color. It make them looking much cooler.  
+* The stock lights get an ability to change the lens color. It make them looking much cooler.
 ![Illuminator Mk1](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk1-lens-demo.png) ![Illuminator Mk2](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk2-lens-demo.png)
 * All light parts, including the stock ones, can be adjusted in flight when EVA. The following properties can be adjusted:
   - On/OFF status. Even if the vessel that owns the part is not controllable.
