@@ -52,6 +52,9 @@ public class ModuleColoredLensLight : ModuleLightEva {
   public float lensBrightness = 0.5f;
 
   #region Local fields and properties
+  /// <summary>Cached property ID for the shader emissive color. </summary>
+  static readonly int EmissiveColorShaderProperty = Shader.PropertyToID("_EmissiveColor");
+
   /// <summary>The lens brightness at the scene load.</summary>
   /// <remarks>It's not the parts default setting!</remarks>
   float _originalLensBrightness;
@@ -98,9 +101,9 @@ public class ModuleColoredLensLight : ModuleLightEva {
   protected void UpdateLightTextureColor() {
     // By default, update all the emissive materials.
     part.FindModelComponents<Renderer>()
-        .Where(r => r.material.HasProperty("_EmissiveColor"))
+        .Where(r => r.material.HasProperty(EmissiveColorShaderProperty))
         .ToList()
-        .ForEach(r => r.material.SetColor("_EmissiveColor", GetLightTextureColor()));
+        .ForEach(r => r.material.SetColor(EmissiveColorShaderProperty, GetLightTextureColor()));
   }
 
   /// <summary>Returns a color to set on the emission texture.</summary>
