@@ -51,6 +51,12 @@ public class ModuleColoredLensLight : ModuleLightEva {
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
   public float lensBrightness = 0.5f;
 
+  #region Local fields and properties
+  /// <summary>The lens brightness at the scene load.</summary>
+  /// <remarks>It's not the parts default setting!</remarks>
+  float _originalLensBrightness;
+  #endregion
+
   #region ModuleLightEva overrides
   /// <inheritdoc/>
   public override void OnInitialize() {
@@ -72,6 +78,17 @@ public class ModuleColoredLensLight : ModuleLightEva {
     SetupField(nameof(lightB), f => f.OnValueModified += (x => UpdateLightTextureColor()));
   }
 
+  /// <inheritdoc/>
+  protected override void SavePersistedSettings() {
+    base.SavePersistedSettings();
+    _originalLensBrightness = lensBrightness;
+  }
+
+  /// <inheritdoc/>
+  protected override void RestorePersistedSettings() {
+    base.RestorePersistedSettings();
+    SetupField(nameof(lensBrightness), f => f.SetValue(_originalLensBrightness, this));
+  }
   #endregion
 
   #region Inheritable util methods
