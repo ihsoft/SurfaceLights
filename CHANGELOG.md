@@ -1,4 +1,5 @@
 # 1.16 (pre-release):
+* [Fix #4] Add range and spot angle adjutsable controls.
 * [Fix #27] Allow light color and status be controllable in EVA and in flight.
 * [Change] Stop complaining about KSP minor version change.
 
