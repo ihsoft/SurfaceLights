@@ -24,6 +24,12 @@ public class ModuleLightEva : ModuleLight {
   [KSPField]
   public bool allowEvaControl;
 
+  /// <summary>
+  /// Tells if the <c>ModuleAnimateGeneric</c> setting can be adjusted and operated from EVA.
+  /// </summary>
+  [KSPField]
+  public bool allowEvaAnimationControl;
+
   /// <summary>Sets the maximum range value in GUI.</summary>
   /// <remarks>
   /// If it's less than the model light currently have, the model's value will be used instead.
@@ -81,6 +87,11 @@ public class ModuleLightEva : ModuleLight {
   /// <summary>Light's color at the scene load.</summary>
   /// <seealso cref="SavePersistedSettings"/>
   Color _originalColor;
+
+  /// <summary>The original values of all the <c>ModuleAnimateGeneric</c> modules.</summary>
+  /// <seealso cref="SavePersistedSettings"/>
+  /// <seealso cref="allowEvaAnimationControl"/>
+  float[] _originalAnimationSettings = new float[0];
   #endregion
 
   #region PartModule overrides
@@ -131,6 +142,10 @@ public class ModuleLightEva : ModuleLight {
       SetupFieldForEva(f);
       f.OnValueModified += x => UpdateLightRange((float) x);
     });
+
+    // Enable generic animations if there are eligible.
+    foreach (var animationModule in GetGenericAnimationModulesForEva()) {
+      SetupFieldForEva(animationModule.Fields[nameof(ModuleAnimateGeneric.deployPercent)]);
     }
   }
   #endregion
@@ -160,6 +175,15 @@ public class ModuleLightEva : ModuleLight {
     _originalSpotAngle = refLight.spotAngle;
     _originalLightRange = refLight.range;
     _originalColor = new Color(lightR, lightG, lightB);
+
+    var animationModules = GetGenericAnimationModulesForEva();
+    _originalAnimationSettings = new float[animationModules.Length];
+    for (var i = 0; i < animationModules.Length; i++) {
+      var animationModule = animationModules[i];
+      var kspField = animationModule.Fields[nameof(ModuleAnimateGeneric.deployPercent)];
+      SetupFieldForEva(kspField);
+      _originalAnimationSettings[i] = kspField.GetValue<float>(animationModule);
+    }
   }
 
   /// <summary>Restores light settings to what was in effect at the part load.</summary>
@@ -175,6 +199,13 @@ public class ModuleLightEva : ModuleLight {
     SetupField(nameof(lightR), f => f.SetValue(_originalColor.r, this));
     SetupField(nameof(lightG), f => f.SetValue(_originalColor.g, this));
     SetupField(nameof(lightB), f => f.SetValue(_originalColor.b, this));
+
+    var animationModules = GetGenericAnimationModulesForEva();
+    for (var i = 0; i < Math.Min(animationModules.Length, _originalAnimationSettings.Length); i++) {
+      var animationModule = animationModules[i];
+      var kspField = animationModule.Fields[nameof(ModuleAnimateGeneric.deployPercent)];
+      kspField.SetValue(_originalAnimationSettings[i], animationModule);
+    }
   }
 
   /// <summary>Applies a setup function on a KSP part module event.</summary>
@@ -208,6 +239,24 @@ public class ModuleLightEva : ModuleLight {
   protected static void AdjustUiFloatMax(BaseField field, float actualValue) {
     SetupFloatUiControlMax(field, field.uiControlEditor, actualValue);
     SetupFloatUiControlMax(field, field.uiControlFlight, actualValue);
+  }
+
+  /// <summary>Returns generic animation modules that can be adjusted for EVA.</summary>
+  /// <remarks>
+  /// If settings <see cref="allowEvaAnimationControl"/> is not set, then the result is always an
+  /// empty array. Otherwise, the existing modules on the part that allows adjusting deploy limit in
+  /// the editor will be returned for enabling them in EVA.
+  /// </remarks>
+  /// <returns>Empty array or an array of the modules that acn be adjusted for EVA.</returns>
+  protected ModuleAnimateGeneric[] GetGenericAnimationModulesForEva() {
+    //FIXME
+    Debug.LogAssertionFormat("*** allow erstocked {0}", allowEvaAnimationControl);
+    if (allowEvaAnimationControl) {
+      return part.Modules.OfType<ModuleAnimateGeneric>()
+          .Where(x => x.allowDeployLimit)
+          .ToArray();
+    }
+    return new ModuleAnimateGeneric[0];
   }
   #endregion
 

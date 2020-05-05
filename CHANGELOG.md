@@ -3,6 +3,7 @@
 * [Fix #27] Allow light color and status be controllable in EVA and in flight.
 * [Change] Stop complaining about KSP minor version change.
 * [Enhancement] Add PAW action to reset the changed settings to the state at the scene load.
+* [Enhancement] Allow ReStock+ light parts orientation for EVA adjustment.
 
 # 1.15 (December 1st, 2019):
 * [Fix #25] Stock lights don't emit light, conflict with Restock.
