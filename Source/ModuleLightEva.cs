@@ -156,14 +156,31 @@ public class ModuleLightEva : ModuleLight {
   /// <param name="field">The FloatRange field to adjust.</param>
   /// <param name="actualValue">The value that needs to fit the control.</param>
   protected static void AdjustUiFloatMax(BaseField field, float actualValue) {
-    var uiFloat = field.uiControlFlight as UI_FloatRange;
-    if (uiFloat != null && uiFloat.maxValue < actualValue) {
-      uiFloat.maxValue = actualValue;
-    }
+    SetupFloatUiControlMax(field, field.uiControlEditor, actualValue);
+    SetupFloatUiControlMax(field, field.uiControlFlight, actualValue);
   }
   #endregion
 
   #region Local utility methods
+  /// <summary>
+  /// Ensures that max setting of the FloatRange UI control is not less than the provided value. 
+  /// </summary>
+  static void SetupFloatUiControlMax(BaseField field, UI_Control control, float refValue) {
+    if (control != null) {
+      var uiFloat = control as UI_FloatRange;
+      if (uiFloat == null) {
+        Debug.LogErrorFormat(
+            "Field is not of a FloatRange type: {0}.{1}",
+            field.MemberInfo.DeclaringType, field.MemberInfo.Name);
+        return;
+      }
+      if (uiFloat.maxValue < refValue) {
+        uiFloat.maxValue = refValue;
+      }
+    }
+    return;
+  } 
+
   /// <summary>Updates the spot light angle in all of the lights in the module.</summary>
   void UpdateSpotLightAngle(float newValue) {
     spotAngleOverride = newValue;
