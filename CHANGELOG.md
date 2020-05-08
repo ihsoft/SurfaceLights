@@ -1,6 +1,7 @@
 # 1.16 (pre-release):
 * [Fix #4] Add range and spot angle adjutsable controls.
 * [Fix #27] Allow light color and status be controllable in EVA and in flight.
+* [Fix #28] Stock lights don't show up in the CCK category.
 * [Change] Stop complaining about KSP minor version change.
 * [Enhancement] Add PAW action to reset the changed settings to the state at the scene load.
 * [Enhancement] Allow ReStock+ light parts orientation for EVA adjustment.
