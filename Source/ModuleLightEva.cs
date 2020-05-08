@@ -112,8 +112,8 @@ public class ModuleLightEva : ModuleLight {
     // Populate the UI controls with the actual data from the model.
     var refLight = lights[0];
     if (lights.Count > 1) {
-      Debug.LogWarning(
-          "Multiple lights are not supported! Use to the first one as the reference.");
+      HostedDebugLog.Warning(
+          this, "Multiple lights are not supported! Use to the first one as the reference.");
     }
     spotAngle = refLight.spotAngle;
     lightRange = refLight.range;
@@ -214,7 +214,7 @@ public class ModuleLightEva : ModuleLight {
   protected void SetupEvent(Action eventFn, Action<BaseEvent> setupFn) {
     var moduleEvent = Events[eventFn.Method.Name];
     if (moduleEvent == null) {
-      Debug.LogErrorFormat("Cannot find event: {0}", eventFn.Method.Name);
+      HostedDebugLog.Error(this, "Cannot find event: {0}", eventFn.Method.Name);
       return;
     }
     setupFn.Invoke(moduleEvent);
@@ -226,7 +226,7 @@ public class ModuleLightEva : ModuleLight {
   protected void SetupField(string fieldName, Action<BaseField> setupFn) {
     var kspField = Fields[fieldName];
     if (kspField == null) {
-      Debug.LogErrorFormat("Cannot find field: {0}", fieldName);
+      HostedDebugLog.Error(this, "Cannot find field: {0}", fieldName);
       return;
     }
     setupFn.Invoke(kspField);
@@ -262,16 +262,18 @@ public class ModuleLightEva : ModuleLight {
   /// <summary>
   /// Ensures that max setting of the FloatRange UI control is not less than the provided value. 
   /// </summary>
-  static void SetupFloatUiControlMax(BaseField field, UI_Control control, float refValue) {
+  void SetupFloatUiControlMax(BaseField field, UI_Control control, float refValue) {
     if (control != null) {
       var uiFloat = control as UI_FloatRange;
       if (uiFloat == null) {
-        Debug.LogErrorFormat(
-            "Field is not of a FloatRange type: {0}.{1}",
-            field.MemberInfo.DeclaringType, field.MemberInfo.Name);
+        HostedDebugLog.Error(
+            this, "Field is not of a FloatRange type: {0}", field.MemberInfo.Name);
         return;
       }
       if (uiFloat.maxValue < refValue) {
+        HostedDebugLog.Fine(
+            this, "Adjust field max value: field={0}, oldMax={1}, newMax={2}",
+            field.MemberInfo.Name, uiFloat.maxValue, refValue);
         uiFloat.maxValue = refValue;
       }
     }

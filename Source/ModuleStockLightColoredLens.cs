@@ -3,6 +3,7 @@
 // Author: igor.zavoychinskiy@gmail.com 
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
+using KSPDev.LogUtils;
 using System.Linq;
 using UnityEngine;
 
@@ -38,7 +39,7 @@ public class ModuleStockLightColoredLens : ModuleColoredLensLight {
   /// <summary>Replaces stock light dimming animation to properly adjust emissive color.</summary>
   /// <param name="animation">Animation object to fix.</param>
   void ReplaceLightOnOffAnimation(Animation animation) {
-    Debug.LogFormat("Replacing animation clip in part {0} for {1}", part, animation.clip.name);
+    HostedDebugLog.Info(this, "Replacing animation clip with {1}", animation.clip.name);
     var clip = animation.clip;
     clip.ClearCurves();
     clip.SetCurve(EmissiveLensModelPath, typeof(Material), "_EmissiveColor.a",

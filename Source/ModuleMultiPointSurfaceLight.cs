@@ -4,6 +4,7 @@
 // This software is distributed under
 // a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
+using KSPDev.LogUtils;
 using UnityEngine;
 
 namespace SurfaceLights {
@@ -60,8 +61,8 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
     if (animationState) {
       UpdateAnimationState();
     } else {
-      Debug.LogErrorFormat("Bad model or config in part {0}. Cannot find animation: {1}",
-                           part, animationName);
+      HostedDebugLog.Error(
+          this, "Bad model or config in part {0}. Cannot find animation: {1}", part, animationName);
     }
   }
   
