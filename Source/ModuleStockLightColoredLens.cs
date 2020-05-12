@@ -39,7 +39,7 @@ public class ModuleStockLightColoredLens : ModuleColoredLensLight {
   /// <summary>Replaces stock light dimming animation to properly adjust emissive color.</summary>
   /// <param name="animation">Animation object to fix.</param>
   void ReplaceLightOnOffAnimation(Animation animation) {
-    HostedDebugLog.Info(this, "Replacing animation clip with {1}", animation.clip.name);
+    HostedDebugLog.Info(this, "Replacing animation clip with {0}", animation.clip.name);
     var clip = animation.clip;
     clip.ClearCurves();
     clip.SetCurve(EmissiveLensModelPath, typeof(Material), "_EmissiveColor.a",
