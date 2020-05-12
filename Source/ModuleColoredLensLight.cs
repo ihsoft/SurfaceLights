@@ -3,6 +3,7 @@
 // Author: igor.zavoychinskiy@gmail.com 
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
+using KSPDev.GUIUtils;
 using System.Linq;
 using UnityEngine;
 
@@ -46,9 +47,13 @@ public class ModuleColoredLensLight : ModuleLightEva {
   /// <summary>Defines minimum white color level.</summary>
   /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
   /// <seealso cref="ModuleColoredLensLight"/>
-  [KSPField(guiName = "#SurfaceLights_ModuleColoredLensLight_lensBrightness", isPersistant = true,
-            advancedTweakable = true)]
+  [KSPField(isPersistant = true, advancedTweakable = true)]
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
+  [LocalizableItem(
+      tag = "#SurfaceLights_ModuleColoredLensLight_lensBrightness",
+      defaultTemplate = "Reset changes",
+      description = "A UI control that allows setting brightness of the lens on the lighting"
+          + " part.")]
   public float lensBrightness = 0.5f;
 
   #region Local fields and properties

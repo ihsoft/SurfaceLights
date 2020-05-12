@@ -3,6 +3,8 @@
 // License: Public Domain.
 // Github: https://github.com/ihsoft/SurfaceLights
 
+using KSPDev.GUIUtils;
+using KSPDev.LogUtils;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -18,7 +20,7 @@ namespace SurfaceLights {
 /// controlled by a special module settings <see cref="allowEvaControl"/>. If this setting is
 /// <c>false</c>, then no exposure is made and the default behavior is preserved.  
 /// </remarks>
-public class ModuleLightEva : ModuleLight {
+public class ModuleLightEva : ModuleLight, IsLocalizableModule {
   #region Part config fields
   /// <summary>Tells if the light can be adjusted and operated from EVA.</summary>
   [KSPField]
@@ -58,18 +60,30 @@ public class ModuleLightEva : ModuleLight {
 
   #region PAW controls
   /// <summary>Allows changing the spot angle of the light(s).</summary>
-  [KSPField(guiName = "#SurfaceLights_ModuleLightEva_SpotAngle", advancedTweakable = true)]
+  [KSPField(advancedTweakable = true)]
   [UI_FloatRange(stepIncrement = 1f, minValue = 10f, maxValue = 180f)]
+  [LocalizableItem(
+      tag = "#SurfaceLights_ModuleLightEva_SpotAngle",
+      defaultTemplate = "Beam angle",
+      description = "A UI control that allows setting spotlight beam angle.")]
   public float spotAngle;
 
   /// <summary>Allows changing the light(s) range.</summary>
-  [KSPField(guiName = "#SurfaceLights_ModuleLightEva_LightRange", advancedTweakable = true)]
+  [KSPField(advancedTweakable = true)]
   [UI_FloatRange(stepIncrement = 0.1f, minValue = 0f, maxValue = 100f)]
+  [LocalizableItem(
+      tag = "#SurfaceLights_ModuleLightEva_LightRange",
+      defaultTemplate = "Light range",
+      description = "A UI control that allows setting the max range of the light.")]
   public float lightRange;
 
   /// <summary>Resets all the adjustable settings to the state on the scene load.</summary>
   /// <summary>Once the scene is saved, this state becomes the base.</summary>
-  [KSPEvent(guiName = "#SurfaceLights_ModuleLightEva_ResetUnsaved")]
+  [KSPEvent]
+  [LocalizableItem(
+      tag = "#SurfaceLights_ModuleLightEva_ResetUnsaved",
+      defaultTemplate = "Reset changes",
+      description = "A PAW action that resets all changed values to the state at the last load.")]
   public void ResetUnsavedSettings() {
     RestorePersistedSettings();
   }
@@ -94,7 +108,21 @@ public class ModuleLightEva : ModuleLight {
   float[] _originalAnimationSettings = new float[0];
   #endregion
 
+  #region IsLocalizableModule implementation
+  /// <inheritdoc/>
+  public void LocalizeModule() {
+    LocalizationLoader.LoadItemsInModule(this);
+  }
+  #endregion
+
   #region PartModule overrides
+  /// <inheritdoc />
+  public override void OnAwake()
+  {
+    base.OnAwake();
+    LocalizeModule();
+  }
+
   /// <inheritdoc/>
   public override void OnStart(StartState state) {
     base.OnStart(state);
