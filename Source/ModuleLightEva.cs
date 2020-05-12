@@ -236,7 +236,7 @@ public class ModuleLightEva : ModuleLight {
   /// <remarks>Call it when the upper bound of the range is not known in advance.</remarks>
   /// <param name="field">The FloatRange field to adjust.</param>
   /// <param name="actualValue">The value that needs to fit the control.</param>
-  protected static void AdjustUiFloatMax(BaseField field, float actualValue) {
+  protected void AdjustUiFloatMax(BaseField field, float actualValue) {
     SetupFloatUiControlMax(field, field.uiControlEditor, actualValue);
     SetupFloatUiControlMax(field, field.uiControlFlight, actualValue);
   }
