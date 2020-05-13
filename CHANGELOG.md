@@ -1,4 +1,4 @@
-# 1.16 (pre-release):
+# 1.16 (May 12th, 2020):
 * [Fix #4] Add range and spot angle adjutsable controls.
 * [Fix #27] Allow light color and status be controllable in EVA and in flight.
 * [Fix #28] Stock lights don't show up in the CCK category.
