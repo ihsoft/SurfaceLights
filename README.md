@@ -5,20 +5,25 @@ The stock light parts are designed to light the distant objects. However, the st
 # Omni Light
 
 Illuminates a small area on the vessel's surface.
+
 ![Omni Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/OmniLight-demo.png)
 
 # Spot Light
 Illuminate the parts and objects at a small distance.
+
 ![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/SpotLight-demo.png)
 
 # 4Way Spot light
 A special version of the spot light that emits light in 4 perpendicular directions. Each light can be adjusted and controlled independently.
+
 ![Spot Light](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/4WaySpotLight-demo.png)
 
 # Features
 
 * The stock lights get an ability to change the lens color. It make them looking much cooler.
+
 ![Illuminator Mk1](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk1-lens-demo.png) ![Illuminator Mk2](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Mk2-lens-demo.png)
+
 * All light parts, including the stock ones, can be adjusted in flight when EVA. The following properties can be adjusted:
   - On/OFF status. Even if the vessel that owns the part is not controllable.
   - Color of the light.
