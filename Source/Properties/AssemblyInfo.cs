@@ -1,5 +1,4 @@
 #region Using directives
-using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -24,8 +23,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion ("1.15.*")]
-[assembly: AssemblyInformationalVersion ("1.15 for KSP v1.8+")]
+[assembly: AssemblyVersion ("1.16.*")]
+[assembly: AssemblyInformationalVersion ("1.16 for KSP v1")]
 [assembly: Guid ("a4d0ab40-75bd-44fb-80bc-f50c194faf4c")]
-[assembly: KSPAssembly ("SurfaceLights", 1, 15)]
+[assembly: KSPAssembly ("SurfaceLights", 1, 16)]
 [assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]

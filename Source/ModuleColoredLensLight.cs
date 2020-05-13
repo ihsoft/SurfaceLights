@@ -3,6 +3,7 @@
 // Author: igor.zavoychinskiy@gmail.com 
 // License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
+using KSPDev.GUIUtils;
 using System.Linq;
 using UnityEngine;
 
@@ -42,14 +43,29 @@ namespace SurfaceLights {
 /// ]]></code>
 /// </example>
 /// <seealso cref="lensBrightness"/>
-public class ModuleColoredLensLight : ModuleLight {
+public class ModuleColoredLensLight : ModuleLightEva {
   /// <summary>Defines minimum white color level.</summary>
   /// <remarks>See module remarks with regard to changing this value from as script.</remarks>
   /// <seealso cref="ModuleColoredLensLight"/>
-  [KSPField(guiName = "#SurfaceLights_ModuleColoredLensLight_lensBrightness", isPersistant = true)]
+  [KSPField(isPersistant = true, advancedTweakable = true)]
   [UI_FloatRange(stepIncrement = 0.05f, maxValue = 1f, minValue = 0f)]
+  [LocalizableItem(
+      tag = "#SurfaceLights_ModuleColoredLensLight_lensBrightness",
+      defaultTemplate = "Reset changes",
+      description = "A UI control that allows setting brightness of the lens on the lighting"
+          + " part.")]
   public float lensBrightness = 0.5f;
 
+  #region Local fields and properties
+  /// <summary>Cached property ID for the shader emissive color. </summary>
+  static readonly int EmissiveColorShaderProperty = Shader.PropertyToID("_EmissiveColor");
+
+  /// <summary>The lens brightness at the scene load.</summary>
+  /// <remarks>It's not the parts default setting!</remarks>
+  float _originalLensBrightness;
+  #endregion
+
+  #region ModuleLightEva overrides
   /// <inheritdoc/>
   public override void OnInitialize() {
     base.OnInitialize();
@@ -57,34 +73,54 @@ public class ModuleColoredLensLight : ModuleLight {
   }
 
   /// <inheritdoc/>
-  public override void OnAwake() {
-    base.OnAwake();
-    Fields["lensBrightness"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightR"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightG"].OnValueModified += (x => UpdateLightTextureColor());
-    Fields["lightB"].OnValueModified += (x => UpdateLightTextureColor());
+  public override void OnStart(StartState state) {
+    base.OnStart(state);
+    SetupField(nameof(lensBrightness), f => {
+      if (allowEvaControl) {
+        SetupFieldForEva(f);
+      }
+      f.OnValueModified += (x => UpdateLightTextureColor());
+    });
+    SetupField(nameof(lightR), f => f.OnValueModified += (x => UpdateLightTextureColor()));
+    SetupField(nameof(lightG), f => f.OnValueModified += (x => UpdateLightTextureColor()));
+    SetupField(nameof(lightB), f => f.OnValueModified += (x => UpdateLightTextureColor()));
   }
 
+  /// <inheritdoc/>
+  protected override void SavePersistedSettings() {
+    base.SavePersistedSettings();
+    _originalLensBrightness = lensBrightness;
+  }
+
+  /// <inheritdoc/>
+  protected override void RestorePersistedSettings() {
+    base.RestorePersistedSettings();
+    SetupField(nameof(lensBrightness), f => f.SetValue(_originalLensBrightness, this));
+  }
+  #endregion
+
+  #region Inheritable util methods
   /// <summary>
   /// Updates the emissive color of the material so that it matches the light color.
   /// </summary>
-  public virtual void UpdateLightTextureColor() {
+  protected void UpdateLightTextureColor() {
     // By default, update all the emissive materials.
     part.FindModelComponents<Renderer>()
-        .Where(r => r.material.HasProperty("_EmissiveColor"))
+        .Where(r => r.material.HasProperty(EmissiveColorShaderProperty))
         .ToList()
-        .ForEach(r => r.material.SetColor("_EmissiveColor", GetLightTextureColor()));
+        .ForEach(r => r.material.SetColor(EmissiveColorShaderProperty, GetLightTextureColor()));
   }
 
   /// <summary>Returns a color to set on the emission texture.</summary>
   /// <remarks>Using raw color looks kinda ugly, so do some minor filtering. Add an intensity offset
   /// to the light's color to make the texture be colored even when the light is turned off.
   /// </remarks>
-  protected virtual Color GetLightTextureColor() {
+  protected Color GetLightTextureColor() {
     return new Color(lightR * (1.0f - lensBrightness) + lensBrightness,
                      lightG * (1.0f - lensBrightness) + lensBrightness,
                      lightB * (1.0f - lensBrightness) + lensBrightness);
   }
+  #endregion
 }
 
 }  // namespace

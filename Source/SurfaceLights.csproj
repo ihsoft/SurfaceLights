@@ -51,6 +51,9 @@
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>Q:\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="KSPDev_Utils.2.3, Version=2.3.7435.219, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Binaries\KSPDev_Utils.2.3.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -73,12 +76,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuleColoredLensLight.cs" />
+    <Compile Include="ModuleLightEva.cs" />
     <Compile Include="ModuleMultiPointSurfaceLight.cs" />
     <Compile Include="ModuleStockLightColoredLens.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins\" /Y</PostBuildEvent>
+    <PostBuildEvent>
+IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins\" /Y
+IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetDir)KSPDev_Utils*.dll" "Q:\GameData\SurfaceLights\Plugins\" /Y
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
