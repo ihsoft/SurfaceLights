@@ -26,6 +26,12 @@ A special version of the spot light that emits light in 4 perpendicular directio
   - The spotlight angle. __In Adwanced Tweakables mode only__.
   - The light range. __In Adwanced Tweakables mode only__.
 
+# Demo media
+
+* [VIDEO: Overview of the EVA capabilities](https://youtu.be/tu6VmhfeBnE).
+
+\* _The videos above were created using the pre-release versions of SurfaceLights. Real appearance may differ_.
+
 # Languages supported
 
 ![Русский](https://github.com/ihsoft/SurfaceLights/raw/master/WikiImages/Russian-small-flag.png) Русский
