@@ -27,9 +27,9 @@ A special version of the spot light that emits light in 4 perpendicular directio
 * All light parts, including the stock ones, can be adjusted in flight when EVA. The following properties can be adjusted:
   - On/OFF status. Even if the vessel that owns the part is not controllable.
   - Color of the light.
-  - The light part lens intensity. __In Adwanced Tweakables mode only__.
-  - The spotlight angle. __In Adwanced Tweakables mode only__.
-  - The light range. __In Adwanced Tweakables mode only__.
+  - The light part lens intensity. __In Advanced Tweakables mode only__.
+  - The spotlight angle. __In Advanced Tweakables mode only__.
+  - The light range. __In Advanced Tweakables mode only__.
 
 # Demo media
 
