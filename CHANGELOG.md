@@ -1,4 +1,5 @@
 # 1.17 (December 26th, 2020):
+* [Fix #33] Duplicated "Light On/Off" events in PAW.
 * [Change] Deprecate the stock lights lens customization since it's now supported by the game.
 * [Enhancement] Make the light parts compatible with the stock inventory system.
 * [Enhancement] Add light customization controls in FLIGHT to the new stock light parts.
