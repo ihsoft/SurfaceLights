@@ -2,6 +2,7 @@
 * [Fix #33] Duplicated "Light On/Off" events in PAW.
 * [Change] Deprecate the stock lights lens customization since it's now supported by the game.
 * [Enhancement] Make the light parts compatible with the stock inventory system.
+* [Enhancement] Allow "Blink On/Off" toggle on the uncommand vessels.
 * [Enhancement] Add light customization controls in FLIGHT to the new stock light parts.
 * [Enhancement] Group the new stock lights into the "Lights" category.
 

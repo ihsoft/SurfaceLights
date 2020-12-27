@@ -152,6 +152,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
     SetupField(nameof(lightB), SetupFieldForEva);
 
     SetupEvent(ToggleLights, SetupEventForEva);
+    SetupEvent(ToggleBlink, SetupEventForEva);
     SetupEvent(ResetUnsavedSettings, SetupEventForEva);
 
     // Allow spotlight angle to be customized.
