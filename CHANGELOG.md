@@ -1,5 +1,8 @@
 # 1.17 (December 26th, 2020):
+* [Change] Deprecate the stock lights lens customization since it's now supported by the game.
 * [Enhancement] Make the light parts compatible with the stock inventory system.
+* [Enhancement] Add light customization controls in FLIGHT to the new stock light parts.
+* [Enhancement] Group the new stock lights into the "Lights" category.
 
 # 1.16 (May 12th, 2020):
 * [Fix #4] Add range and spot angle adjutsable controls.
