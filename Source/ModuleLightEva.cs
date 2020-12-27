@@ -84,7 +84,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
       tag = "#SurfaceLights_ModuleLightEva_ResetUnsaved",
       defaultTemplate = "Reset changes",
       description = "A PAW action that resets all changed values to the state at the last load.")]
-  public void ResetUnsavedSettings() {
+  public virtual void ResetUnsavedSettings() {
     RestorePersistedSettings();
   }
   #endregion

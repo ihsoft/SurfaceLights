@@ -88,4 +88,10 @@ IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetPath)" "Q:\GameData\SurfaceL
 IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetDir)KSPDev_Utils*.dll" "Q:\GameData\SurfaceLights\Plugins\" /Y
 </PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
 </Project>
