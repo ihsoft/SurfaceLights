@@ -51,8 +51,8 @@
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>Q:\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="KSPDev_Utils.2.3, Version=2.3.7435.219, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Binaries\KSPDev_Utils.2.3.dll</HintPath>
+    <Reference Include="KSPDev_Utils.2.4, Version=2.4.7504.27510, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Binaries\KSPDev_Utils.2.4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -87,5 +87,11 @@
 IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetPath)" "Q:\GameData\SurfaceLights\Plugins\" /Y
 IF EXIST "Q:\GameData\SurfaceLights" xcopy "$(TargetDir)KSPDev_Utils*.dll" "Q:\GameData\SurfaceLights\Plugins\" /Y
 </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 </Project>

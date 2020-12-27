@@ -79,12 +79,12 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
 
   /// <summary>Resets all the adjustable settings to the state on the scene load.</summary>
   /// <summary>Once the scene is saved, this state becomes the base.</summary>
-  [KSPEvent]
+  [KSPEvent(guiActive = true, guiActiveEditor = true, unfocusedRange = 10f)]
   [LocalizableItem(
       tag = "#SurfaceLights_ModuleLightEva_ResetUnsaved",
       defaultTemplate = "Reset changes",
       description = "A PAW action that resets all changed values to the state at the last load.")]
-  public void ResetUnsavedSettings() {
+  public virtual void ResetUnsavedSettings() {
     RestorePersistedSettings();
   }
   #endregion
@@ -146,13 +146,9 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
     spotAngle = refLight.spotAngle;
     lightRange = refLight.range;
 
-    // Setup the stock fields and events for EVA usage. 
-    SetupEvent(LightsOn, SetupEventForEva);
-    SetupEvent(LightsOff, SetupEventForEva);
-    SetupField(nameof(lightR), SetupFieldForEva);
-    SetupField(nameof(lightG), SetupFieldForEva);
-    SetupField(nameof(lightB), SetupFieldForEva);
-
+    // Setup the stock fields and events for EVA usage.
+    SetupEvent(ToggleLights, SetupEventForEva);
+    SetupEvent(ToggleBlink, SetupEventForEva);
     SetupEvent(ResetUnsavedSettings, SetupEventForEva);
 
     // Allow spotlight angle to be customized.
@@ -181,7 +177,6 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
   #region Inheritable utility methods
   /// <summary>Makes the event to be fully accessible from EVA.</summary>
   protected static void SetupEventForEva(BaseEvent kspEvent) {
-    kspEvent.guiActive = true;
     kspEvent.guiActiveUnfocused = true;
     kspEvent.guiActiveUncommand = true;
   }

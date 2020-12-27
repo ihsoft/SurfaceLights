@@ -18,7 +18,7 @@
       "{COMPILED_BINARY}",
       "{MINIAVC_VERSION_FILE}",
       "/Binaries/*",
-      "-KSP-AVC.version"
+      "-MiniAVC-V2.version"
     ]
   }
 }
