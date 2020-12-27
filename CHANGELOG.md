@@ -1,4 +1,5 @@
 # 1.17 (December 26th, 2020):
+* [Enhancement] Make the light parts compatible with the stock inventory system.
 
 # 1.16 (May 12th, 2020):
 * [Fix #4] Add range and spot angle adjutsable controls.
