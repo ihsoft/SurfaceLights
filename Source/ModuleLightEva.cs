@@ -146,11 +146,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
     spotAngle = refLight.spotAngle;
     lightRange = refLight.range;
 
-    // Setup the stock fields and events for EVA usage. 
-    SetupField(nameof(lightR), SetupFieldForEva);
-    SetupField(nameof(lightG), SetupFieldForEva);
-    SetupField(nameof(lightB), SetupFieldForEva);
-
+    // Setup the stock fields and events for EVA usage.
     SetupEvent(ToggleLights, SetupEventForEva);
     SetupEvent(ToggleBlink, SetupEventForEva);
     SetupEvent(ResetUnsavedSettings, SetupEventForEva);

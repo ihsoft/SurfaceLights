@@ -1,5 +1,6 @@
 # 1.17 (December 26th, 2020):
 * [Fix #33] Duplicated "Light On/Off" events in PAW.
+* [Change] Deprecate the legacy RGB controls in favor of the new stock color changer.
 * [Change] Deprecate the stock lights lens customization since it's now supported by the game.
 * [Enhancement] Make the light parts compatible with the stock inventory system.
 * [Enhancement] Allow "Blink On/Off" toggle on the uncommand vessels.
