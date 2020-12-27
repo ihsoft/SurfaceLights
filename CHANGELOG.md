@@ -1,3 +1,5 @@
+# 1.17 (December 26th, 2020):
+
 # 1.16 (May 12th, 2020):
 * [Fix #4] Add range and spot angle adjutsable controls.
 * [Fix #27] Allow light color and status be controllable in EVA and in flight.
