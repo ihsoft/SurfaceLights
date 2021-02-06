@@ -23,8 +23,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
-[assembly: AssemblyVersion ("1.17.*")]
-[assembly: AssemblyInformationalVersion ("1.17 for KSP v1")]
+[assembly: AssemblyVersion ("1.18.*")]
+[assembly: AssemblyInformationalVersion ("1.18 for KSP v1")]
 [assembly: Guid ("a4d0ab40-75bd-44fb-80bc-f50c194faf4c")]
-[assembly: KSPAssembly ("SurfaceLights", 1, 17)]
+[assembly: KSPAssembly ("SurfaceLights", 1, 18)]
 [assembly: AssemblyFlags (AssemblyNameFlags.PublicKey | AssemblyNameFlags.EnableJITcompileOptimizer)]

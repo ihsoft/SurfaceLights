@@ -1,3 +1,5 @@
+# 1.18 (pre-release):
+
 # 1.17 (December 26th, 2020):
 * [Fix #33] Duplicated "Light On/Off" events in PAW.
 * [Change] Deprecate the legacy RGB controls in favor of the new stock color changer.
