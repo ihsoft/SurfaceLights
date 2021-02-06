@@ -117,8 +117,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
 
   #region PartModule overrides
   /// <inheritdoc />
-  public override void OnAwake()
-  {
+  public override void OnAwake() {
     base.OnAwake();
     LocalizeModule();
   }
