@@ -1,4 +1,5 @@
 # 1.18 (pre-release):
+* [Fix #36] ReStock lights get broken.
 
 # 1.17 (December 26th, 2020):
 * [Fix #33] Duplicated "Light On/Off" events in PAW.
