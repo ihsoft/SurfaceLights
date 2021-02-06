@@ -1,4 +1,4 @@
-# 1.18 (pre-release):
+# 1.18 (February 2nd, 2021):
 * [Fix #36] ReStock lights get broken.
 * [Change] Disable "lens brightness" option in the stock parts to not break their design.
 

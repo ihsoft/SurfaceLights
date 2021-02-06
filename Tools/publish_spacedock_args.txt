@@ -3,4 +3,4 @@
 --changelog=../CHANGELOG.md
 --github=ihsoft/SurfaceLights
 --ksp_version=latest
---archive=../SurfaceLights_v1.17.zip
+--archive=../SurfaceLights_v1.18.zip
