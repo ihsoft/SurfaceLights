@@ -19,9 +19,9 @@
     "NAME": "Surface Mounted Lights", 
     "URL": "https://raw.githubusercontent.com/ihsoft/SurfaceLights/master/SurfaceLights.version", 
     "VERSION": {
-        "BUILD": 33291, 
+        "BUILD": 41955, 
         "MAJOR": 1, 
-        "MINOR": 17, 
-        "PATCH": 7665
+        "MINOR": 18, 
+        "PATCH": 7706
     }
 }

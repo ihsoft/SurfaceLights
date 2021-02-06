@@ -117,8 +117,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
 
   #region PartModule overrides
   /// <inheritdoc />
-  public override void OnAwake()
-  {
+  public override void OnAwake() {
     base.OnAwake();
     LocalizeModule();
   }
@@ -126,36 +125,60 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
   /// <inheritdoc/>
   public override void OnStart(StartState state) {
     base.OnStart(state);
+    if (allowEvaControl) {
+      // Setup the stock fields and events for EVA usage.
+      SetupEvent(ToggleLights, SetupEventForEva);
+      SetupEvent(ToggleBlink, SetupEventForEva);
+      SetupEvent(ResetUnsavedSettings, SetupEventForEva);
+
+      // Enable generic animations if there are eligible.
+      foreach (var animationModule in GetGenericAnimationModulesForEva()) {
+        SetupFieldForEva(animationModule.Fields[nameof(ModuleAnimateGeneric.deployPercent)]);
+      }
+    }
+
+    // A fail safe check for the other mods.
+    if (lights.Count == 0) {
+      var lightNames = DbgFormatter.C2S(
+        part.FindModelComponents<Light>(),
+        p => DbgFormatter.TranformPath(p.gameObject, part.transform),
+        "\n");
+      HostedDebugLog.Error(this, "No lights are defined in the part!");
+      HostedDebugLog.Error(
+          this,
+          "No lights are defined in the part for name '{0}'! Here are the available lights:\n{1}",
+          lightName, lightNames);
+      foreach (var l in part.FindModelComponents<Light>()) {
+        HostedDebugLog.Error(this, "Found a light in the model: {0}", l);
+      }
+      return;
+    }
+    if (lights.Count > 1) {
+      HostedDebugLog.Warning(
+        this, "Multiple lights are not supported! Use to the first one as the reference.");
+    }
+
+    // This section cannot be in OnLoad due to the "lights" are only populated in OnStart.
     if (spotAngleOverride > 0) {
       UpdateSpotLightAngle(spotAngleOverride);
     }
+
     if (lightRangeOverride > 0) {
       UpdateLightRange(lightRangeOverride);
     }
-    if (!allowEvaControl) {
-      return;  // Nothing to do.
-    }
     SavePersistedSettings();
-
+    
     // Populate the UI controls with the actual data from the model.
     var refLight = lights[0];
-    if (lights.Count > 1) {
-      HostedDebugLog.Warning(
-          this, "Multiple lights are not supported! Use to the first one as the reference.");
-    }
     spotAngle = refLight.spotAngle;
     lightRange = refLight.range;
-
-    // Setup the stock fields and events for EVA usage.
-    SetupEvent(ToggleLights, SetupEventForEva);
-    SetupEvent(ToggleBlink, SetupEventForEva);
-    SetupEvent(ResetUnsavedSettings, SetupEventForEva);
 
     // Allow spotlight angle to be customized.
     if (refLight.type == LightType.Spot) {
       SetupField(nameof(spotAngle), f => {
         AdjustUiFloatMax(f, spotAngle);
         SetupFieldForEva(f);
+        f.guiActiveEditor = true;
         f.OnValueModified += x => UpdateSpotLightAngle((float) x);
       });
     }
@@ -164,13 +187,9 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
     SetupField(nameof(lightRange), f => {
       AdjustUiFloatMax(f, Math.Max(lightRange, maxLightRange));
       SetupFieldForEva(f);
+      f.guiActiveEditor = true;
       f.OnValueModified += x => UpdateLightRange((float) x);
     });
-
-    // Enable generic animations if there are eligible.
-    foreach (var animationModule in GetGenericAnimationModulesForEva()) {
-      SetupFieldForEva(animationModule.Fields[nameof(ModuleAnimateGeneric.deployPercent)]);
-    }
   }
   #endregion
 
