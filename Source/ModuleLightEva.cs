@@ -156,6 +156,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
       SetupField(nameof(spotAngle), f => {
         AdjustUiFloatMax(f, spotAngle);
         SetupFieldForEva(f);
+        f.guiActiveEditor = true;
         f.OnValueModified += x => UpdateSpotLightAngle((float) x);
       });
     }
@@ -164,6 +165,7 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
     SetupField(nameof(lightRange), f => {
       AdjustUiFloatMax(f, Math.Max(lightRange, maxLightRange));
       SetupFieldForEva(f);
+      f.guiActiveEditor = true;
       f.OnValueModified += x => UpdateLightRange((float) x);
     });
 
