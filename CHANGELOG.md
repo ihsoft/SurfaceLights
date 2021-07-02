@@ -1,4 +1,5 @@
 # 1.19 (pre-release):
+* [Change] Use a specialized `KSPDev Utils` version ot workaround `KPS 1.12` bug when duplicated mods are detected.
 
 # 1.18 (February 2nd, 2021):
 * [Fix #36] ReStock lights get broken.
