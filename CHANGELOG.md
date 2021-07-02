@@ -1,6 +1,7 @@
 # 1.19 (July 1st, 2021):
 * [Change] `KSP 1.11` compatibility. __WARNING__: the mod won't work with version lower than `KSP 1.11`!
 * [Change] Use a specialized `KSPDev Utils` version ot workaround `KPS 1.12` bug when duplicated mods are detected.
+* [Fix #39] Color picker is not available.
 
 # 1.18 (February 2nd, 2021):
 * [Fix #36] ReStock lights get broken.
