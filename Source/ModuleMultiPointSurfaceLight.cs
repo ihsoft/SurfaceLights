@@ -17,10 +17,9 @@ namespace SurfaceLights {
 /// Light name is used to make GUI strings so, keep it short and human readable.
 /// E.g. "L1", "L2", etc.
 /// </remarks>
-public class ModuleMultiPointSurfaceLight : ModuleLightEva, IsDestroyable {
+public sealed class ModuleMultiPointSurfaceLight : ModuleLightEva, IsDestroyable {
   /// <summary>All the light modules on the part.</summary>
-  ModuleLight[] allLightModules =>
-      _allLightModules ?? (_allLightModules = part.GetComponents<ModuleLight>());
+  ModuleLight[] allLightModules => _allLightModules ??= part.GetComponents<ModuleLight>();
   ModuleLight[] _allLightModules;
 
   /// <summary>Dimming animation effect.</summary>
@@ -34,25 +33,6 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva, IsDestroyable {
     }
   }
   AnimationState _animationState;
-
-  /// <summary>Scans for the animation in the model and records the found value.</summary>
-  /// <remarks>Scanning model for components is an expensive operation so, cache the found values
-  /// assuming they won't change.
-  /// <para>In case of some control needs to mangle with animations in runtime allow this method to
-  /// be called by the children.</para>
-  /// </remarks>
-  protected void FindAnimation() {
-    var animations = part.FindModelComponents<Animation>();
-    foreach (var modelAnimation in animations) {
-      var modelAnimationState = modelAnimation[animationName];
-      if (modelAnimationState != null) {
-        _animationState = modelAnimationState;
-        _animationState.normalizedSpeed = 0;  // Freeze.
-        modelAnimation.Play(animationName);
-        break;
-      }
-    }
-  }
 
   /// <inheritdoc/>
   public override void OnLoad(ConfigNode node) {
@@ -84,6 +64,25 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva, IsDestroyable {
     if (ReferenceEquals(module, this)) {
       UpdateAnimationState();
       UpdatePawStrings();
+    }
+  }
+
+  /// <summary>Scans for the animation in the model and records the found value.</summary>
+  /// <remarks>Scanning model for components is an expensive operation so, cache the found values
+  /// assuming they won't change.
+  /// <para>In case of some control needs to mangle with animations in runtime allow this method to
+  /// be called by the children.</para>
+  /// </remarks>
+  void FindAnimation() {
+    var animations = part.FindModelComponents<Animation>();
+    foreach (var modelAnimation in animations) {
+      var modelAnimationState = modelAnimation[animationName];
+      if (modelAnimationState != null) {
+        _animationState = modelAnimationState;
+        _animationState.normalizedSpeed = 0;  // Freeze.
+        modelAnimation.Play(animationName);
+        break;
+      }
     }
   }
 
