@@ -20,7 +20,7 @@ namespace SurfaceLights {
 /// controlled by a special module settings <see cref="allowEvaControl"/>. If this setting is
 /// <c>false</c>, then no exposure is made and the default behavior is preserved.  
 /// </remarks>
-public class ModuleLightEva : ModuleLight, IsLocalizableModule {
+public class ModuleLightEva : ModuleLight, IsLocalizableModule, IModuleInfo {
   #region Part config fields
   /// <summary>Tells if the light can be adjusted and operated from EVA.</summary>
   [KSPField]
@@ -112,6 +112,24 @@ public class ModuleLightEva : ModuleLight, IsLocalizableModule {
   /// <inheritdoc/>
   public void LocalizeModule() {
     LocalizationLoader.LoadItemsInModule(this);
+  }
+  #endregion
+
+  #region IModuleInfo implementation
+  /// <inheritdoc/>
+  public string GetModuleTitle() {
+    // KSP fails to figure the class descendants.
+    return KSPUtil.PrintModuleName(nameof(ModuleLight));
+  }
+
+  /// <inheritdoc/>
+  public Callback<Rect> GetDrawModulePanelCallback() {
+    return null;  // No behavior.
+  }
+
+  /// <inheritdoc/>
+  public string GetPrimaryField() {
+    return null;  // No behavior.
   }
   #endregion
 
