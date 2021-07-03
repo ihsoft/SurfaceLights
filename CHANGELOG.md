@@ -1,4 +1,4 @@
-# 1.19 (July 1st, 2021):
+# 1.19 (July 2st, 2021):
 * [Change] `KSP 1.11` compatibility. __WARNING__: the mod won't work with version lower than `KSP 1.11`!
 * [Change] Use a specialized `KSPDev Utils` version ot workaround `KPS 1.12` bug when duplicated mods are detected.
 * [Change] Deprecate `ModuleStockLightColoredLens` module.
