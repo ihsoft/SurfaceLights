@@ -5,6 +5,7 @@
 * [Fix #39] Color picker is not available.
 * [Fix #40] Deprecate the lens brightness control. The lens is now controlled by the stock game.
 * [Fix #41] Light identifier gets lost when state changes ON/OFF.
+* [Fix #44] Deal with duplicated "light" entries in the by module filter.
 
 # 1.18 (February 2nd, 2021):
 * [Fix #36] ReStock lights get broken.
