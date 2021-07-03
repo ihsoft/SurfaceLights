@@ -4,6 +4,8 @@
 // This software is distributed under
 // a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
 
+using System.Linq;
+using KSPDev.KSPInterfaces;
 using KSPDev.LogUtils;
 using UnityEngine;
 
@@ -15,10 +17,7 @@ namespace SurfaceLights {
 /// Light name is used to make GUI strings so, keep it short and human readable.
 /// E.g. "L1", "L2", etc.
 /// </remarks>
-public class ModuleMultiPointSurfaceLight : ModuleLightEva {
-  /// <summary>Last known light state.</summary>
-  bool _lastOnState;
-
+public class ModuleMultiPointSurfaceLight : ModuleLightEva, IsDestroyable {
   /// <summary>All the light modules on the part.</summary>
   ModuleLight[] allLightModules =>
       _allLightModules ?? (_allLightModules = part.GetComponents<ModuleLight>());
@@ -70,34 +69,37 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   public override void OnStart(StartState state) {
     base.OnStart(state);
     UpdateAnimationState();
+    UpdatePawStrings();
+    GameEvents.onLightsOff.Add(OnLightStateEvent);
+    GameEvents.onLightsOn.Add(OnLightStateEvent);
+  }
 
-    // Rewrite GUI names to identify different lights. Only do it when part is created in the
-    // editor. Rewritten names will be stored in the save file so, no need to fix them every time.
-    // Though, the editor starts part on every load so, some checks may be needed to not modify
-    // names endlessly.
-    if (state == StartState.Editor) {
-      foreach (var action in Actions) {
-        if (!action.guiName.StartsWith(lightName)) {
-          action.guiName = lightName + ": " + action.guiName;
-        }
-      }
-      foreach (var uiEvent in Events) {
-        if (!uiEvent.guiName.StartsWith(lightName)) {
-          uiEvent.guiName = lightName + ": " + uiEvent.guiName;
-        }
-      }
-      var uiFields = new[] {Fields["lightR"], Fields["lightG"], Fields["lightB"]};
-      foreach (var field in uiFields) {
-        field.guiName = lightName + ": " + field.guiName;
-      }
+  /// <inheritdoc/>
+  public void OnDestroy() {
+    GameEvents.onLightsOff.Remove(OnLightStateEvent);
+    GameEvents.onLightsOn.Remove(OnLightStateEvent);
+  }
+
+  void OnLightStateEvent(Part p, ModuleLight module) {
+    if (ReferenceEquals(module, this)) {
+      UpdateAnimationState();
+      UpdatePawStrings();
     }
   }
 
-  void Update() {
-	  // Verify global state of the animation on every light state change.
-	  // FIXME: It's not the best idea from the performance perspective. So, fix the animation!
-    if (_lastOnState != isOn) {
-      UpdateAnimationState();
+  /// <summary>Ensures all PAW items have the light name prefix.</summary>
+  void UpdatePawStrings() {
+    foreach (var action in Actions.Where(action => !action.guiName.StartsWith(lightName))) {
+      action.guiName = lightName + ": " + action.guiName;
+    }
+    foreach (var uiEvent in Events.Where(uiEvent => !uiEvent.guiName.StartsWith(lightName))) {
+      uiEvent.guiName = lightName + ": " + uiEvent.guiName;
+    }
+    var uiFields = new[] {Fields["lightR"], Fields["lightG"], Fields["lightB"]};
+    foreach (var field in uiFields) {
+      if (!field.guiName.StartsWith(lightName)) {
+        field.guiName = lightName + ": " + field.guiName;
+      }
     }
   }
 
@@ -106,7 +108,6 @@ public class ModuleMultiPointSurfaceLight : ModuleLightEva {
   /// behaving nicely show the lighted texture if at least one of the lights is active. Disable the
   /// texture if none is enabled.</remarks>
 	void UpdateAnimationState() {
-    _lastOnState = isOn;
     if (animationState) {
       var allAreOff = true;
       foreach (var module in allLightModules) {
